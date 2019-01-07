@@ -1,0 +1,46 @@
+<template>
+  <v-container grid-list-md fill-height text-xs-center>
+    <v-layout column>
+      <h4 class="display-1 my-5">Step 1: Select Your Fitness Program</h4>
+      <v-layout align-start justify-space-around wrap>
+        <v-hover v-for="(p, i) in programs" :key="i" xs12 md3>
+          <v-card
+            slot-scope="{ hover }"
+            :color="`primary elevation-${hover ? 24 : 2}`"
+            class="d-flex align-center program"
+            height="250"
+            width="250"
+            @click="selectProgram(p)"
+          >
+            <v-img :src="p.image"></v-img>
+          </v-card>
+        </v-hover>
+      </v-layout>
+      <v-btn color="primary">Next</v-btn>
+    </v-layout>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    programs() {
+      return this.$store.state.programs;
+    }
+  },
+  methods: {
+    selectProgram(program) {
+      this.$store.dispatch('selectProgram', program);
+    }
+  }
+};
+</script>
+
+<style scoped>
+.program {
+  padding: 20px;
+}
+</style>
