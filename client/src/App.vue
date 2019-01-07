@@ -9,7 +9,7 @@
       <v-btn>
         <span class="mr-2">Containers Key</span>
       </v-btn>
-      <v-btn>
+      <v-btn v-if="this.$store.state.user.selectedProgram" @click="reset">
         <span class="mr-2">Start Over</span>
       </v-btn>
     </v-toolbar>
@@ -29,6 +29,12 @@ export default {
   created() {
     this.$store.dispatch('fetchPrograms');
     this.$store.dispatch('fetchRecipes');
+  },
+  methods: {
+    reset() {
+      this.$store.dispatch('reset');
+      this.$router.push('/');
+    }
   }
 };
 </script>

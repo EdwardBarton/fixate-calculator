@@ -23,6 +23,12 @@ export default new Vuex.Store({
     },
     SELECT_PROGRAM(state, program) {
       state.user.selectedProgram = program;
+    },
+    RESET(state) {
+      state.user.selectedProgram = null;
+      state.user.gender = null;
+      state.user.weight = 0;
+      state.user.nutritionPlan = null;
     }
   },
   actions: {
@@ -38,6 +44,9 @@ export default new Vuex.Store({
     },
     selectProgram({ commit }, program) {
       commit('SELECT_PROGRAM', program);
+    },
+    reset({ commit }) {
+      commit('RESET');
     }
   }
 });

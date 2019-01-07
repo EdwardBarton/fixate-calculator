@@ -1,8 +1,8 @@
 <template>
   <v-container grid-list-md fill-height text-xs-center>
     <v-layout column>
-      <h4 class="display-1 my-5">Step 1: Select Your Fitness Program</h4>
-      <v-layout align-start justify-space-around wrap>
+      <h4 class="display-1 mt-5">Step 1: Select Your Fitness Program</h4>
+      <v-layout align-center justify-space-around wrap>
         <v-hover v-for="(p, i) in programs" :key="i" xs12 md3>
           <v-card
             slot-scope="{ hover }"
@@ -16,7 +16,6 @@
           </v-card>
         </v-hover>
       </v-layout>
-      <v-btn color="primary">Next</v-btn>
     </v-layout>
   </v-container>
 </template>
@@ -34,6 +33,7 @@ export default {
   methods: {
     selectProgram(program) {
       this.$store.dispatch('selectProgram', program);
+      this.$router.push('/about');
     }
   }
 };
@@ -42,5 +42,6 @@ export default {
 <style scoped>
 .program {
   padding: 20px;
+  cursor: pointer;
 }
 </style>
