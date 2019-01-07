@@ -1,6 +1,387 @@
+// *************** BEACHBODY FITNESS PROGRAMS *************** //
+const programs = [
+  // LIIFT4
+  {
+    id: 1,
+    name: 'LIIFT4',
+    image: 'https://bit.ly/2Fbi4UR',
+    trainers: ['Joel Freeman'],
+    nutritionPlans: [
+      {
+        id: 'A',
+        weight: {
+          male: {
+            min: 0,
+            max: 168
+          },
+          female: {
+            min: 0,
+            max: 168
+          }
+        },
+        minCalories: 1200,
+        maxCalories: 1499,
+        containers: {
+          green: 3,
+          purple: 2,
+          red: 4,
+          yellow: 2,
+          blue: 1,
+          orange: 1,
+          tsp: 2
+        }
+      },
+      {
+        id: 'B',
+        weight: {
+          male: {
+            min: 168.5,
+            max: 195
+          },
+          female: {
+            min: 168.5,
+            max: 195
+          }
+        },
+        minCalories: 1500,
+        maxCalories: 1799,
+        containers: {
+          green: 4,
+          purple: 3,
+          red: 4,
+          yellow: 3,
+          blue: 1,
+          orange: 1,
+          tsp: 4
+        }
+      },
+      {
+        id: 'C',
+        weight: {
+          male: {
+            min: 195.5,
+            max: 222
+          },
+          female: {
+            min: 195.5,
+            max: 222
+          }
+        },
+        minCalories: 1800,
+        maxCalories: 2099,
+        containers: {
+          green: 5,
+          purple: 3,
+          red: 5,
+          yellow: 4,
+          blue: 1,
+          orange: 1,
+          tsp: 5
+        }
+      },
+      {
+        id: 'D',
+        weight: {
+          male: {
+            min: 222.5,
+            max: 240
+          },
+          female: {
+            min: 222.5,
+            max: 240
+          }
+        },
+        minCalories: 2100,
+        maxCalories: 2299,
+        containers: {
+          green: 6,
+          purple: 4,
+          red: 6,
+          yellow: 4,
+          blue: 1,
+          orange: 1,
+          tsp: 6
+        }
+      },
+      {
+        id: 'E',
+        weight: {
+          male: {
+            min: 240.5,
+            max: 259
+          },
+          female: {
+            min: 240.5,
+            max: 259
+          }
+        },
+        minCalories: 2300,
+        maxCalories: 2499,
+        containers: {
+          green: 7,
+          purple: 5,
+          red: 6,
+          yellow: 5,
+          blue: 1,
+          orange: 1,
+          tsp: 7
+        }
+      },
+      {
+        id: 'F',
+        weight: {
+          male: {
+            min: 259.5,
+            max: 1000
+          },
+          female: {
+            min: 259.5,
+            max: 1000
+          }
+        },
+        minCalories: 2500,
+        maxCalories: 2799,
+        containers: {
+          green: 8,
+          purple: 5,
+          red: 7,
+          yellow: 5,
+          blue: 1,
+          orange: 1,
+          tsp: 8
+        }
+      }
+    ]
+  },
+  // Transform:20
+  {
+    id: 2,
+    name: 'Transform:20',
+    image: 'https://bit.ly/2Ry1nZE',
+    trainers: ['Shaun T'],
+    nutritionPlans: [
+      {
+        id: 'A',
+        weight: {
+          male: {
+            min: null,
+            max: null
+          },
+          female: {
+            min: 0,
+            max: 168
+          }
+        },
+        minCalories: 1200,
+        maxCalories: 1499,
+        containers: {
+          green: 3,
+          purple: 2,
+          red: 4,
+          yellow: 2,
+          blue: 1,
+          orange: 1,
+          tsp: 2
+        }
+      },
+      {
+        id: 'B',
+        weight: {
+          male: {
+            min: 0,
+            max: 168
+          },
+          female: {
+            min: 168.5,
+            max: 195
+          }
+        },
+        minCalories: 1500,
+        maxCalories: 1799,
+        containers: {
+          green: 4,
+          purple: 3,
+          red: 4,
+          yellow: 3,
+          blue: 1,
+          orange: 1,
+          tsp: 4
+        }
+      },
+      {
+        id: 'C',
+        weight: {
+          male: {
+            min: 168.5,
+            max: 195
+          },
+          female: {
+            min: 195.5,
+            max: 222
+          }
+        },
+        minCalories: 1800,
+        maxCalories: 2099,
+        containers: {
+          green: 5,
+          purple: 3,
+          red: 5,
+          yellow: 4,
+          blue: 1,
+          orange: 1,
+          tsp: 5
+        }
+      },
+      {
+        id: 'D',
+        weight: {
+          male: {
+            min: 195.5,
+            max: 222
+          },
+          female: {
+            min: 222.5,
+            max: 240
+          }
+        },
+        minCalories: 2100,
+        maxCalories: 2299,
+        containers: {
+          green: 6,
+          purple: 4,
+          red: 6,
+          yellow: 4,
+          blue: 1,
+          orange: 1,
+          tsp: 6
+        }
+      },
+      {
+        id: 'E',
+        weight: {
+          male: {
+            min: 222.5,
+            max: 1000
+          },
+          female: {
+            min: 240.5,
+            max: 1000
+          }
+        },
+        minCalories: 2300,
+        maxCalories: 2499,
+        containers: {
+          green: 7,
+          purple: 5,
+          red: 6,
+          yellow: 5,
+          blue: 1,
+          orange: 1,
+          tsp: 7
+        }
+      }
+    ]
+  },
+  // 80 Day Obsession
+  {
+    id: 3,
+    name: '80 Day Obsession',
+    image: 'https://bit.ly/2VAteaE',
+    trainers: ['Autumn Calabrese'],
+    nutritionPlans: [
+      {
+        id: 'A',
+        minCalories: 1200,
+        maxCalories: 1499,
+        containers: {
+          green: 4,
+          purple: 2,
+          red: 4,
+          yellow: 2,
+          blue: 1,
+          orange: 1,
+          tsp: 3
+        }
+      },
+      {
+        id: 'B',
+        minCalories: 1500,
+        maxCalories: 1799,
+        containers: {
+          green: 4,
+          purple: 3,
+          red: 3,
+          yellow: 3,
+          blue: 1,
+          orange: 1,
+          tsp: 4
+        }
+      },
+      {
+        id: 'C',
+        minCalories: 1800,
+        maxCalories: 2099,
+        containers: {
+          green: 5,
+          purple: 3,
+          red: 5,
+          yellow: 4,
+          blue: 1,
+          orange: 1,
+          tsp: 5
+        }
+      },
+      {
+        id: 'D',
+        minCalories: 2100,
+        maxCalories: 2299,
+        containers: {
+          green: 6,
+          purple: 4,
+          red: 6,
+          yellow: 4,
+          blue: 1,
+          orange: 1,
+          tsp: 6
+        }
+      },
+      {
+        id: 'E',
+        minCalories: 2300,
+        maxCalories: 2499,
+        containers: {
+          green: 7,
+          purple: 5,
+          red: 6,
+          yellow: 5,
+          blue: 1,
+          orange: 1,
+          tsp: 7
+        }
+      },
+      {
+        id: 'F',
+        minCalories: 2500,
+        maxCalories: 2800,
+        containers: {
+          green: 8,
+          purple: 5,
+          red: 7,
+          yellow: 5,
+          blue: 1,
+          orange: 1,
+          tsp: 8
+        }
+      }
+    ]
+  }
+];
+
+// *************** FIXATE RECIPES *************** //
 const recipes = {
   breakfast: [
     {
+      id: 1,
       name: 'Arnold Palmer Concentrate',
       image:
         'https://www.edamam.com/web-img/11c/11ce887aafcdd20b0cd5f7a861f0fa66.jpg',
@@ -21,8 +402,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 32,
@@ -56,6 +436,7 @@ const recipes = {
       }
     },
     {
+      id: 2,
       name: 'Apricot Breakfast Popsicles Recipe',
       image:
         'https://www.edamam.com/web-img/76e/76e3eb57e3b6982ed1f34fa538814471.jpg',
@@ -111,6 +492,7 @@ const recipes = {
       }
     },
     {
+      id: 3,
       name: 'Black Tea Jelly',
       image:
         'https://www.edamam.com/web-img/822/8224b5b91557151df19b9d82e727436d.jpeg',
@@ -129,8 +511,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 42,
@@ -141,8 +522,7 @@ const recipes = {
           unit: 'g'
         },
         fiber: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sugars: {
           quantity: 49,
@@ -164,6 +544,7 @@ const recipes = {
       }
     },
     {
+      id: 4,
       name: 'Breakfast Smoothies',
       image:
         'https://www.edamam.com/web-img/56e/56ed0ce74f0785273f5adb39ca563cc9.jpg',
@@ -221,6 +602,7 @@ const recipes = {
       }
     },
     {
+      id: 5,
       name: 'Pickled Radishes recipes',
       image:
         'https://www.edamam.com/web-img/c12/c1271e0c95e734774df288b12d7d99f1',
@@ -244,8 +626,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 1310,
@@ -281,6 +662,7 @@ const recipes = {
   ],
   snacks: [
     {
+      id: 6,
       name: "Strawberry Fruit Roll-Ups from 'Classic Snacks Made from Scratch'",
       image:
         'https://www.edamam.com/web-img/9f6/9f670d334e5620ed20d7a244c7bd158f.jpg',
@@ -300,8 +682,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 6,
@@ -335,6 +716,7 @@ const recipes = {
       }
     },
     {
+      id: 7,
       name: 'Baked Potato Snack recipes',
       image:
         'https://www.edamam.com/web-img/633/6330c4b566f8eba34eb1c5a4e66aa43e',
@@ -353,8 +735,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 571,
@@ -388,6 +769,7 @@ const recipes = {
       }
     },
     {
+      id: 8,
       name: 'Gingerbread Snacking Cake',
       image:
         'https://www.edamam.com/web-img/ae0/ae081a54586068c8c3f61d37b5ceedc7.jpg',
@@ -455,6 +837,7 @@ const recipes = {
       }
     },
     {
+      id: 9,
       name: 'Healthy Vegan Snacking recipes',
       image:
         'https://www.edamam.com/web-img/939/9391ed601aa7ed85f28c0e4407b84d40',
@@ -477,8 +860,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 48,
@@ -512,6 +894,7 @@ const recipes = {
       }
     },
     {
+      id: 10,
       name: 'Warm Fruit and Nut Snack',
       image:
         'https://www.edamam.com/web-img/7d2/7d272534d3a9a3c4e206d026f85458ff.jpg',
@@ -531,8 +914,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 14,
@@ -568,6 +950,7 @@ const recipes = {
   ],
   lunch: [
     {
+      id: 11,
       name: 'Sack Lunch: Fairytale Picnic Recipe',
       image:
         'https://www.edamam.com/web-img/70a/70aaa8022bf8706c375551c44718eaab.jpg',
@@ -595,8 +978,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 360,
@@ -630,6 +1012,7 @@ const recipes = {
       }
     },
     {
+      id: 12,
       name: 'Pork-And-Black Bean Power Lunch',
       image:
         'https://www.edamam.com/web-img/929/9292137c7d899767b71acbbe93d48e4d.jpg',
@@ -685,6 +1068,7 @@ const recipes = {
       }
     },
     {
+      id: 13,
       name: 'Snakebite Recipe',
       image:
         'https://www.edamam.com/web-img/5fb/5fb33bf36b9a194b2258cb21387906f3.jpg',
@@ -703,8 +1087,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 18,
@@ -715,8 +1098,7 @@ const recipes = {
           unit: 'g'
         },
         fiber: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sugars: {
           quantity: 2,
@@ -738,6 +1120,7 @@ const recipes = {
       }
     },
     {
+      id: 14,
       name: 'Apple flavored lentils and rice',
       image:
         'https://www.edamam.com/web-img/649/6495057e5738be7ae34267819a69a847.jpg',
@@ -796,6 +1179,7 @@ const recipes = {
       }
     },
     {
+      id: 15,
       name: 'Marinated Cauliflower',
       image:
         'https://www.edamam.com/web-img/4e2/4e297f28eedc5865eb4a5d28380339fa.JPG',
@@ -818,8 +1202,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 174,
@@ -855,6 +1238,7 @@ const recipes = {
   ],
   dinner: [
     {
+      id: 16,
       name: 'Little Hot After-Dinner Shots',
       image:
         'https://www.edamam.com/web-img/507/507d62f41d3ee34bc9892aec3358a2dd.jpg',
@@ -886,8 +1270,7 @@ const recipes = {
           unit: 'g'
         },
         fiber: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sugars: {
           quantity: 126,
@@ -909,6 +1292,7 @@ const recipes = {
       }
     },
     {
+      id: 17,
       name: 'Dinner Rolls',
       image:
         'https://www.edamam.com/web-img/c44/c44dc9adfaf217fb927cca62e34261b5.jpg',
@@ -967,6 +1351,7 @@ const recipes = {
       }
     },
     {
+      id: 18,
       name: 'Dinner Tonight: Portuguese Salad',
       image:
         'https://www.edamam.com/web-img/028/028958eecc587e55b05ca18484787470.jpg',
@@ -992,8 +1377,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 1777,
@@ -1027,6 +1411,7 @@ const recipes = {
       }
     },
     {
+      id: 19,
       name: 'Golden Dinner Rolls recipes',
       image:
         'https://www.edamam.com/web-img/620/620c1ea6a24b3ac994ecc2fb1b6c0f3a',
@@ -1086,6 +1471,7 @@ const recipes = {
       }
     },
     {
+      id: 20,
       name: 'After-Dinner Turmeric Spritzer recipes',
       image:
         'https://www.edamam.com/web-img/fd9/fd95a44a976bf90bcdb4de50ba2221ea',
@@ -1112,8 +1498,7 @@ const recipes = {
           unit: 'g'
         },
         cholesterol: {
-          quantity: 0,
-          unit: 'N/A'
+          quantity: 0
         },
         sodium: {
           quantity: 55,
@@ -1149,4 +1534,4 @@ const recipes = {
   ]
 };
 
-module.exports = recipes;
+module.exports = { recipes, programs };

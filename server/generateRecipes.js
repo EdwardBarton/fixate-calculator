@@ -31,43 +31,43 @@ app.get('/generaterecipes', (req, res) => {
                   quantity: Math.floor(r.recipe.totalNutrients.FAT.quantity),
                   unit: r.recipe.totalNutrients.FAT.unit
                 }
-              : { quantity: 0, unit: 'N/A' },
+              : { quantity: 0 },
             cholesterol: r.recipe.totalNutrients.CHOLE
               ? {
                   quantity: Math.floor(r.recipe.totalNutrients.CHOLE.quantity),
                   unit: r.recipe.totalNutrients.CHOLE.unit
                 }
-              : { quantity: 0, unit: 'N/A' },
+              : { quantity: 0 },
             sodium: r.recipe.totalNutrients.NA
               ? {
                   quantity: Math.floor(r.recipe.totalNutrients.NA.quantity),
                   unit: r.recipe.totalNutrients.NA.unit
                 }
-              : { quantity: 0, unit: 'N/A' },
+              : { quantity: 0 },
             carbs: r.recipe.totalNutrients.CHOCDF
               ? {
                   quantity: Math.floor(r.recipe.totalNutrients.CHOCDF.quantity),
                   unit: r.recipe.totalNutrients.CHOCDF.unit
                 }
-              : { quantity: 0, unit: 'N/A' },
+              : { quantity: 0 },
             fiber: r.recipe.totalNutrients.FIBTG
               ? {
                   quantity: Math.floor(r.recipe.totalNutrients.FIBTG.quantity),
                   unit: r.recipe.totalNutrients.FIBTG.unit
                 }
-              : { quantity: 0, unit: 'N/A' },
+              : { quantity: 0 },
             sugars: r.recipe.totalNutrients.SUGAR
               ? {
                   quantity: Math.floor(r.recipe.totalNutrients.SUGAR.quantity),
                   unit: r.recipe.totalNutrients.SUGAR.unit
                 }
-              : { quantity: 0, unit: 'N/A' },
+              : { quantity: 0 },
             protein: r.recipe.totalNutrients.PROCNT
               ? {
                   quantity: Math.floor(r.recipe.totalNutrients.PROCNT.quantity),
                   unit: r.recipe.totalNutrients.PROCNT.unit
                 }
-              : { quantity: 0, unit: 'N/A' }
+              : { quantity: 0 }
           },
           containers: {
             green: generateRandomContainers(),
