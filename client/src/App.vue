@@ -1,10 +1,12 @@
 <template>
   <v-app>
     <v-toolbar color="primary" app>
-      <v-toolbar-title class="headline text-uppercase white--text">
-        <span>Fixate</span>
-        <span class="font-weight-light">Calculator</span>
-      </v-toolbar-title>
+      <router-link to="/">
+        <v-toolbar-title class="headline text-uppercase white--text">
+          <span>Fixate</span>
+          <span class="font-weight-light">Calculator</span>
+        </v-toolbar-title>
+      </router-link>
       <v-spacer></v-spacer>
       <v-btn>
         <span class="mr-2">Containers Key</span>
@@ -33,7 +35,7 @@ export default {
   methods: {
     reset() {
       this.$store.dispatch('reset');
-      this.$router.push('/');
+      this.$router.push('/programs');
     }
   }
 };
