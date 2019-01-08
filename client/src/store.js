@@ -8,11 +8,14 @@ export default new Vuex.Store({
     user: {
       selectedProgram: null,
       gender: null,
-      weight: 0,
+      weight: null,
       nutritionPlan: null
     },
     programs: [],
     recipes: {}
+  },
+  getters: {
+    getUser: state => state.user
   },
   mutations: {
     FETCH_PROGRAMS(state, programs) {
@@ -24,11 +27,24 @@ export default new Vuex.Store({
     SELECT_PROGRAM(state, program) {
       state.user.selectedProgram = program;
     },
-    RESET(state) {
+    RESET_USER(state) {
       state.user.selectedProgram = null;
       state.user.gender = null;
-      state.user.weight = 0;
+      state.user.weight = null;
       state.user.nutritionPlan = null;
+    },
+    UPDATE_USER(state, { getters, user }) {
+      // Set user's gender and weight
+      state.user.gender = user.gender;
+      state.user.weight = user.weight;
+
+      // Determine user's nutrition plan
+      const stateUser = getters.getUser;
+      state.user.nutritionPlan = stateUser.selectedProgram.nutritionPlans.filter(
+        plan =>
+          plan.weight[user.gender].min <= stateUser.weight &&
+          plan.weight[user.gender].max >= stateUser.weight
+      )[0];
     }
   },
   actions: {
@@ -45,8 +61,11 @@ export default new Vuex.Store({
     selectProgram({ commit }, program) {
       commit('SELECT_PROGRAM', program);
     },
-    reset({ commit }) {
-      commit('RESET');
+    resetUser({ commit }) {
+      commit('RESET_USER');
+    },
+    updateUser({ commit, getters }, user) {
+      commit('UPDATE_USER', { getters, user });
     }
   }
 });
