@@ -8,10 +8,7 @@
         </v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
-      <v-btn>
-        <span class="mr-2">Containers Key</span>
-      </v-btn>
-      <v-btn v-if="this.$store.state.user.selectedProgram" @click="reset">
+      <v-btn v-if="Object.keys(user.selectedProgram).length !== 0" @click="resetUser">
         <span class="mr-2">Start Over</span>
       </v-btn>
     </v-toolbar>
@@ -23,6 +20,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'App',
   data() {
@@ -32,9 +31,12 @@ export default {
     this.$store.dispatch('fetchPrograms');
     this.$store.dispatch('fetchRecipes');
   },
+  computed: mapState({
+    user: 'user'
+  }),
   methods: {
-    reset() {
-      this.$store.dispatch('reset');
+    resetUser() {
+      this.$store.dispatch('resetUser');
       this.$router.push('/programs');
     }
   }
