@@ -6,16 +6,20 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: {
-      selectedProgram: null,
-      gender: null,
-      weight: null,
-      nutritionPlan: null
+      selectedProgram: {},
+      gender: '',
+      weight: 0,
+      nutritionPlan: {},
+      mealPrep: {
+        breakfast: {},
+        snackA: {},
+        lunch: {},
+        snackB: {},
+        dinner: {}
+      }
     },
     programs: [],
     recipes: {}
-  },
-  getters: {
-    getUser: state => state.user
   },
   mutations: {
     FETCH_PROGRAMS(state, programs) {
@@ -28,23 +32,59 @@ export default new Vuex.Store({
       state.user.selectedProgram = program;
     },
     RESET_USER(state) {
-      state.user.selectedProgram = null;
-      state.user.gender = null;
-      state.user.weight = null;
-      state.user.nutritionPlan = null;
+      state.user.selectedProgram = {};
+      state.user.gender = '';
+      state.user.weight = 0;
+      state.user.nutritionPlan = {};
+      state.user.mealPrep = {
+        breakfast: {},
+        snackA: {},
+        lunch: {},
+        snackB: {},
+        dinner: {}
+      };
     },
-    UPDATE_USER(state, { getters, user }) {
+    UPDATE_USER(state, user) {
       // Set user's gender and weight
       state.user.gender = user.gender;
       state.user.weight = user.weight;
 
       // Determine user's nutrition plan
-      const stateUser = getters.getUser;
-      state.user.nutritionPlan = stateUser.selectedProgram.nutritionPlans.filter(
-        plan =>
-          plan.weight[user.gender].min <= stateUser.weight &&
-          plan.weight[user.gender].max >= stateUser.weight
-      )[0];
+      // 80 Day Obsession plans based off calorie targets, not user's weight
+      if (state.user.selectedProgram.id === 3) {
+        const calorieTarget = state.user.weight * 11 + 50;
+
+        // Target calories outside calorie range for all plans
+        const planA = state.user.selectedProgram.nutritionPlans.filter(
+          plan => plan.id === 'A'
+        )[0];
+        const planF = state.user.selectedProgram.nutritionPlans.filter(
+          plan => plan.id === 'F'
+        )[0];
+
+        // Target calories below Plan A min
+        if (calorieTarget < planA.minCalories) {
+          state.user.nutritionPlan = planA;
+        }
+        // Target calories above Plan F max
+        else if (calorieTarget > planF.maxCalories) {
+          state.user.nutritionPlan = planF;
+        } else {
+          state.user.nutritionPlan = state.user.selectedProgram.nutritionPlans.filter(
+            plan =>
+              plan.minCalories <= calorieTarget &&
+              plan.maxCalories >= calorieTarget
+          )[0];
+        }
+      }
+      // LIIFT 4 and Transform:20 plans based off user's weight
+      else {
+        state.user.nutritionPlan = state.user.selectedProgram.nutritionPlans.filter(
+          plan =>
+            plan.weight[user.gender].min <= state.user.weight &&
+            plan.weight[user.gender].max >= state.user.weight
+        )[0];
+      }
     }
   },
   actions: {
@@ -64,8 +104,8 @@ export default new Vuex.Store({
     resetUser({ commit }) {
       commit('RESET_USER');
     },
-    updateUser({ commit, getters }, user) {
-      commit('UPDATE_USER', { getters, user });
+    updateUser({ commit }, user) {
+      commit('UPDATE_USER', user);
     }
   }
 });
