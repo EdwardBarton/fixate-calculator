@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue';
 import Programs from '@/views/Programs.vue';
 import About from '@/views/About.vue';
 import Prep from '@/views/Prep.vue';
+import Recipe from '@/views/Recipe.vue';
 
 Vue.use(Router);
 
@@ -30,6 +31,12 @@ export default new Router({
       path: '/prep',
       name: 'prep',
       component: Prep
+    },
+    {
+      path: '/recipes/:recipeID',
+      name: 'recipe',
+      component: Recipe,
+      props: true
     }
   ]
 });
