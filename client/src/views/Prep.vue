@@ -1,15 +1,32 @@
 <template>
   <v-container grid-list-md fill-height fluid text-xs-center>
-    <v-layout row wrap>
-      <v-flex d-flex xs12 md8>
+    <v-layout row wrap class="meal-prep">
+      <v-flex d-flex xs12 md8 class="recipe-list">
         <v-layout justify-center>
           <div>
             <h4 class="display-1 mt-2">
               Your {{user.selectedProgram.name}} Nutrition Plan is:
               <strong>Plan {{user.nutritionPlan.id}}</strong>
             </h4>
-            <h4 class="display-1 mt-3">Step 3: Meal Prep</h4>
-            <p>Recipes</p>
+            <h4 class="display-1 my-3">Step 3: Meal Prep</h4>
+            <h6 class="title mt-5 mb-2">Breakfast</h6>
+            <draggable v-model="recipes.breakfast" :options="{handle:'.handle'}">
+              <v-card v-for="r in recipes.breakfast" :key="r.id" class="handle recipe my-1 pa-2">
+                <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
+              </v-card>
+            </draggable>
+            <h6 class="title mt-5 mb-2">Lunch</h6>
+            <draggable v-model="recipes.lunch">
+              <v-card v-for="r in recipes.lunch" :key="r.id" class="recipe my-1 pa-2">{{r.name}}</v-card>
+            </draggable>
+            <h6 class="title mt-5 mb-2">Dinner</h6>
+            <draggable v-model="recipes.dinner">
+              <v-card v-for="r in recipes.dinner" :key="r.id" class="recipe my-1 pa-2">{{r.name}}</v-card>
+            </draggable>
+            <h6 class="title mt-5 mb-2">Snacks</h6>
+            <draggable v-model="recipes.snacks">
+              <v-card v-for="r in recipes.snacks" :key="r.id" class="recipe my-1 pa-2">{{r.name}}</v-card>
+            </draggable>
           </div>
         </v-layout>
       </v-flex>
@@ -25,16 +42,16 @@
                     <v-card class="meal my-1 pa-2">Snack A</v-card>
                     <v-card class="meal my-1 pa-2">Lunch</v-card>
                     <v-card class="meal my-1 pa-2">Snack B</v-card>
-                    <v-card class="meal my-1 pa-2">Dinner</v-card>
+                    <v-card class="meal mt-1 pa-2">Dinner</v-card>
                   </v-flex>
                 </v-layout>
               </v-flex>
             </v-layout>
           </v-flex>
           <v-flex d-flex xs12>
-            <v-layout align-end justify-center>
+            <v-layout justify-center>
               <v-flex xs6 offset-xs1>
-                <h5 class="my-2">Remaining:</h5>
+                <h6 class="title mb-2">Remaining:</h6>
                 <v-layout column>
                   <v-flex>
                     <v-card
@@ -78,8 +95,23 @@
 
 <script>
 import { mapState } from 'vuex';
+import draggable from 'vuedraggable';
 
 export default {
+  components: {
+    draggable
+  },
+  data() {
+    return {
+      mealPlan: {
+        breakfast: {},
+        snackA: {},
+        lunch: {},
+        snackB: {},
+        dinner: {}
+      }
+    };
+  },
   computed: mapState({
     user: 'user',
     recipes: 'recipes'
@@ -91,12 +123,27 @@ export default {
 strong {
   color: #1976d2;
 }
-
+.meal-prep {
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+}
+.recipe-list {
+  overflow: auto;
+  min-height: 100vh;
+}
 .meal-plan {
   border-left: 3px solid #1976d2;
+  position: sticky;
+  top: 0px;
+  height: 90vh;
 }
 
-.meal {
+.meal,
+.recipe {
   border: 1px solid #1976d2;
+}
+.recipe {
+  cursor: move;
 }
 </style>
