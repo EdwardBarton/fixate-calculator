@@ -10,22 +10,28 @@
             </h4>
             <h4 class="display-1 my-3">Step 3: Meal Prep</h4>
             <h6 class="title mt-5 mb-2">Breakfast</h6>
-            <draggable v-model="recipes.breakfast" :options="{handle:'.handle'}">
-              <v-card v-for="r in recipes.breakfast" :key="r.id" class="handle recipe my-1 pa-2">
+            <draggable v-model="breakfastRecipes" :options="{handle:'.handle'}">
+              <v-card v-for="r in breakfastRecipes" :key="r.id" class="handle recipe my-1 pa-2">
                 <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
               </v-card>
             </draggable>
             <h6 class="title mt-5 mb-2">Lunch</h6>
-            <draggable v-model="recipes.lunch">
-              <v-card v-for="r in recipes.lunch" :key="r.id" class="recipe my-1 pa-2">{{r.name}}</v-card>
+            <draggable v-model="lunchRecipes">
+              <v-card v-for="r in lunchRecipes" :key="r.id" class="recipe my-1 pa-2">
+                <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
+              </v-card>
             </draggable>
             <h6 class="title mt-5 mb-2">Dinner</h6>
-            <draggable v-model="recipes.dinner">
-              <v-card v-for="r in recipes.dinner" :key="r.id" class="recipe my-1 pa-2">{{r.name}}</v-card>
+            <draggable v-model="dinnerRecipes">
+              <v-card v-for="r in dinnerRecipes" :key="r.id" class="recipe my-1 pa-2">
+                <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
+              </v-card>
             </draggable>
             <h6 class="title mt-5 mb-2">Snacks</h6>
-            <draggable v-model="recipes.snacks">
-              <v-card v-for="r in recipes.snacks" :key="r.id" class="recipe my-1 pa-2">{{r.name}}</v-card>
+            <draggable v-model="snackRecipes">
+              <v-card v-for="r in snackRecipes" :key="r.id" class="recipe my-1 pa-2">
+                <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
+              </v-card>
             </draggable>
           </div>
         </v-layout>
@@ -114,7 +120,11 @@ export default {
   },
   computed: mapState({
     user: 'user',
-    recipes: 'recipes'
+    breakfastRecipes: state =>
+      state.recipes.filter(r => r.type === 'breakfast'),
+    snackRecipes: state => state.recipes.filter(r => r.type === 'snack'),
+    lunchRecipes: state => state.recipes.filter(r => r.type === 'lunch'),
+    dinnerRecipes: state => state.recipes.filter(r => r.type === 'dinner')
   })
 };
 </script>

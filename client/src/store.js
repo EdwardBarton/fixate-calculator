@@ -10,7 +10,7 @@ export default new Vuex.Store({
       gender: '',
       weight: 0,
       nutritionPlan: {},
-      mealPrep: {
+      mealPlan: {
         breakfast: {},
         snackA: {},
         lunch: {},
@@ -19,7 +19,7 @@ export default new Vuex.Store({
       }
     },
     programs: [],
-    recipes: {}
+    recipes: []
   },
   mutations: {
     FETCH_PROGRAMS(state, programs) {
