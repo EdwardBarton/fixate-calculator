@@ -1,10 +1,12 @@
 <template>
-  <v-container grid-list-md fill-height>
+  <v-container grid-list-md fill-height text-xs-center>
     <v-layout column>
       <v-flex xs12>
         <v-layout row align-center justify-center fill-height>
-          <h4 class="display-1">Plan and Prep in Just Three Steps!</h4>
-          <v-btn round color="primary" @click="getStarted">Get Started</v-btn>
+          <div>
+            <h4 class="display-1">Plan and Prep in Just Three Steps!</h4>
+            <v-btn round color="primary" @click="() => this.$router.push('/programs')">Get Started</v-btn>
+          </div>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -12,13 +14,7 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    getStarted() {
-      this.$router.push('/programs');
-    }
-  }
-};
+export default {};
 </script>
 
 <style scoped>
