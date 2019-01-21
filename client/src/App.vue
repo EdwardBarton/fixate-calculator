@@ -8,12 +8,12 @@
         </v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
-      <v-btn v-if="Object.keys(user.selectedProgram).length !== 0" @click="resetUser">
+      <v-btn color="#FFF" v-if="Object.keys(user.selectedProgram).length !== 0" @click="resetUser">
         <span class="mr-2">Start Over</span>
       </v-btn>
     </v-toolbar>
 
-    <v-content>
+    <v-content class="app">
       <router-view/>
     </v-content>
   </v-app>
@@ -42,3 +42,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.app {
+  background: #eeeded;
+}
+</style>

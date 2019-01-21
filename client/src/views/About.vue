@@ -22,7 +22,7 @@
             >
           </label>
           <label>
-            <v-btn type="submit" color="primary" round @click.prevent="submit">Get My Plan</v-btn>
+            <v-btn type="submit" color="primary" round @click.prevent="getPlan">Get My Plan</v-btn>
           </label>
         </form>
       </v-layout>
@@ -39,8 +39,8 @@ export default {
     };
   },
   methods: {
-    submit() {
-      this.$store.dispatch('updateUser', {
+    getPlan() {
+      this.$store.dispatch('calculateNutritionPlan', {
         gender: this.gender,
         weight: this.weight
       });
@@ -60,14 +60,14 @@ form label {
   display: block;
   margin: 0px 0px 15px 0px;
 }
+
 form input.input-field {
   width: 90%;
-}
-form input.input-field {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  border: 1px solid #c2c2c2;
+  border: 1px solid #000;
+  background: #fff;
   box-shadow: 1px 1px 4px #ebebeb;
   -moz-box-shadow: 1px 1px 4px #ebebeb;
   -webkit-box-shadow: 1px 1px 4px #ebebeb;
@@ -78,6 +78,6 @@ form input.input-field {
   outline: none;
 }
 form .input-field:focus {
-  border: 1px solid #0c0;
+  border: 1px solid #1976d2;
 }
 </style>
