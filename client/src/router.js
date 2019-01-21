@@ -5,6 +5,7 @@ import Programs from '@/views/Programs.vue';
 import About from '@/views/About.vue';
 import Prep from '@/views/Prep.vue';
 import Recipe from '@/views/Recipe.vue';
+import ShoppingList from '@/views/ShoppingList.vue';
 
 Vue.use(Router);
 
@@ -37,6 +38,12 @@ export default new Router({
       name: 'recipe',
       component: Recipe,
       props: true
+    },
+    {
+      path: '/list',
+      name: 'list',
+      component: ShoppingList,
+      props: route => ({ days: route.query.days })
     }
   ]
 });

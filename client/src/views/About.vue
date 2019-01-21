@@ -2,7 +2,7 @@
   <v-container grid-list-md fill-height text-xs-center>
     <v-layout column>
       <h4 class="display-1 my-5">Step 2: About You</h4>
-      <v-layout justify-center>
+      <v-layout justify-center class="about">
         <form>
           <label for="gender">
             <v-radio-group v-model="gender" row>
@@ -53,8 +53,11 @@ export default {
 <style scoped>
 form {
   max-width: 500px;
-  padding: 20px 12px 10px 20px;
-  font: 13px Arial, Helvetica, sans-serif;
+  padding: 40px;
+  border-radius: 10px;
+  font: 15px Arial, Helvetica, sans-serif;
+  background: white;
+  height: 100%;
 }
 form label {
   display: block;

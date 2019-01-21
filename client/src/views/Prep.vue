@@ -92,6 +92,7 @@
                       </v-card>
                     </draggable>
                     <v-btn
+                      round
                       v-if="mealPlan.length > 0"
                       small
                       color="red"
@@ -147,8 +148,24 @@
                         >{{user.nutritionPlan.containers.tsp}}</strong>
                       </v-card>
 
-                      <!-- EXPORT MEAL PLAN -->
-                      <h4 class="my-3">EXPORT</h4>
+                      <!-- EXPORT SHOPPING LIST -->
+                      <form class="mt-5">
+                        <input
+                          type="number"
+                          class="input-field"
+                          name="days"
+                          default="5"
+                          v-model.number="prepDays"
+                          min="1"
+                          max="30"
+                          placeholder="# Prep Days*"
+                          required
+                        >
+                        <v-btn
+                          color="primary"
+                          @click.prevent="emailShoppingList(prepDays)"
+                        >Email Shopping List</v-btn>
+                      </form>
                     </v-flex>
                   </v-flex>
                 </v-layout>
@@ -171,6 +188,7 @@ export default {
   },
   data() {
     return {
+      prepDays: null,
       isDragging: false,
       delayedDragging: false
     };
@@ -186,6 +204,9 @@ export default {
     },
     removeRecipe(recipeID) {
       this.mealPlan = this.mealPlan.filter(recipe => recipe.id !== recipeID);
+    },
+    emailShoppingList(numDays) {
+      this.$router.push(`/list?days=${numDays}`);
     }
   },
   watch: {
@@ -263,6 +284,10 @@ strong {
   cursor: move;
 }
 
+.container {
+  border-radius: 5px;
+}
+
 a {
   text-decoration: none;
   display: inline;
@@ -274,5 +299,25 @@ a {
   color: red;
   cursor: pointer;
   font-weight: bold;
+}
+
+input.input-field {
+  width: 70%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 1px solid #000;
+  background: #fff;
+  box-shadow: 1px 1px 4px #ebebeb;
+  -moz-box-shadow: 1px 1px 4px #ebebeb;
+  -webkit-box-shadow: 1px 1px 4px #ebebeb;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 7px;
+  outline: none;
+}
+.input-field:focus {
+  border: 1px solid #1976d2;
 }
 </style>
