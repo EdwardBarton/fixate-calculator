@@ -13,7 +13,7 @@
         </v-layout>
       </v-flex>
       <v-flex d-flex xs12 md4>
-        <v-img :src="recipe.image" max-height="200px" max-width="200px"></v-img>
+        <v-img :src="recipe.image" max-height="200px" max-width="200px" class="recipe-img"></v-img>
       </v-flex>
     </v-layout>
     <v-layout row text-xs-center>
@@ -125,5 +125,9 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.recipe-img {
+  border-radius: 50%;
 }
 </style>

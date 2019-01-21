@@ -10,13 +10,7 @@ export default new Vuex.Store({
       gender: '',
       weight: 0,
       nutritionPlan: {},
-      mealPlan: {
-        breakfast: {},
-        snackA: {},
-        lunch: {},
-        snackB: {},
-        dinner: {}
-      }
+      mealPlan: []
     },
     programs: [],
     recipes: []
@@ -36,15 +30,9 @@ export default new Vuex.Store({
       state.user.gender = '';
       state.user.weight = 0;
       state.user.nutritionPlan = {};
-      state.user.mealPrep = {
-        breakfast: {},
-        snackA: {},
-        lunch: {},
-        snackB: {},
-        dinner: {}
-      };
+      state.user.mealPlan = [];
     },
-    UPDATE_USER(state, user) {
+    CALCULATE_USER_NUTRITION_PLAN(state, user) {
       // Set user's gender and weight
       state.user.gender = user.gender;
       state.user.weight = user.weight;
@@ -85,6 +73,9 @@ export default new Vuex.Store({
             plan.weight[user.gender].max >= state.user.weight
         )[0];
       }
+    },
+    UPDATE_USER_MEAL_PLAN(state, mealPlan) {
+      state.user.mealPlan = mealPlan;
     }
   },
   actions: {
@@ -104,8 +95,11 @@ export default new Vuex.Store({
     resetUser({ commit }) {
       commit('RESET_USER');
     },
-    updateUser({ commit }, user) {
-      commit('UPDATE_USER', user);
+    calculateNutritionPlan({ commit }, user) {
+      commit('CALCULATE_USER_NUTRITION_PLAN', user);
+    },
+    updateMealPlan({ commit }, mealPlan) {
+      commit('UPDATE_USER_MEAL_PLAN', mealPlan);
     }
   }
 });

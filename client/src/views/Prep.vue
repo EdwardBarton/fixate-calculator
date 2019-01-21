@@ -3,32 +3,62 @@
     <v-layout row wrap class="meal-prep">
       <v-flex d-flex xs12 md8 class="recipe-list">
         <v-layout justify-center>
-          <div>
+          <div class="meal-prep-header">
             <h4 class="display-1 mt-2">
               Your {{user.selectedProgram.name}} Nutrition Plan is:
               <strong>Plan {{user.nutritionPlan.id}}</strong>
             </h4>
             <h4 class="display-1 my-3">Step 3: Meal Prep</h4>
+
+            <!-- **************** RECIPES SECTION **************** -->
+            <!-- BREAKFAST RECIPES -->
             <h6 class="title mt-5 mb-2">Breakfast</h6>
-            <draggable v-model="breakfastRecipes" :options="{handle:'.handle'}">
-              <v-card v-for="r in breakfastRecipes" :key="r.id" class="handle recipe my-1 pa-2">
+            <draggable
+              :move="onMove"
+              :options="dragOptions"
+              :value="breakfastRecipes"
+              @start="isDragging=true"
+              @end="isDragging=false"
+            >
+              <v-card v-for="r in breakfastRecipes" :key="r.id" class="recipe my-1 pa-2">
                 <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
               </v-card>
             </draggable>
             <h6 class="title mt-5 mb-2">Lunch</h6>
-            <draggable v-model="lunchRecipes">
+            <draggable
+              :move="onMove"
+              :options="dragOptions"
+              :value="lunchRecipes"
+              @start="isDragging=true"
+              @end="isDragging=false"
+            >
+              <!-- LUNCH RECIPES -->
               <v-card v-for="r in lunchRecipes" :key="r.id" class="recipe my-1 pa-2">
                 <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
               </v-card>
             </draggable>
             <h6 class="title mt-5 mb-2">Dinner</h6>
-            <draggable v-model="dinnerRecipes">
+            <draggable
+              :move="onMove"
+              :options="dragOptions"
+              :value="dinnerRecipes"
+              @start="isDragging=true"
+              @end="isDragging=false"
+            >
+              <!-- DINNER RECIPES -->
               <v-card v-for="r in dinnerRecipes" :key="r.id" class="recipe my-1 pa-2">
                 <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
               </v-card>
             </draggable>
             <h6 class="title mt-5 mb-2">Snacks</h6>
-            <draggable v-model="snackRecipes">
+            <draggable
+              :move="onMove"
+              :options="dragOptions"
+              :value="snackRecipes"
+              @start="isDragging=true"
+              @end="isDragging=false"
+            >
+              <!-- SNACK RECIPES -->
               <v-card v-for="r in snackRecipes" :key="r.id" class="recipe my-1 pa-2">
                 <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
               </v-card>
@@ -36,58 +66,90 @@
           </div>
         </v-layout>
       </v-flex>
+
+      <!-- **************** MEAL PLANNING SECTION **************** -->
       <v-flex class="meal-plan" d-flex xs12 md4>
         <v-layout row wrap>
           <v-flex d-flex xs12>
             <v-layout justify-center>
               <v-flex xs10 offset-xs1>
-                <h4 class="display-1 my-2">Meal Plan</h4>
+                <h4 class="display-1 my-2">My Meal Plan</h4>
                 <v-layout column>
-                  <v-flex>
-                    <v-card class="meal my-1 pa-2">Breakfast</v-card>
-                    <v-card class="meal my-1 pa-2">Snack A</v-card>
-                    <v-card class="meal my-1 pa-2">Lunch</v-card>
-                    <v-card class="meal my-1 pa-2">Snack B</v-card>
-                    <v-card class="meal mt-1 pa-2">Dinner</v-card>
-                  </v-flex>
-                </v-layout>
-              </v-flex>
-            </v-layout>
-          </v-flex>
-          <v-flex d-flex xs12>
-            <v-layout justify-center>
-              <v-flex xs6 offset-xs1>
-                <h6 class="title mb-2">Remaining:</h6>
-                <v-layout column>
-                  <v-flex>
-                    <v-card
-                      class="container my-1 pa-1 white--text"
-                      color="green"
-                    >Veggies - 0/{{user.nutritionPlan.containers.green}}</v-card>
-                    <v-card
-                      class="container my-1 pa-1 white--text"
-                      color="purple"
-                    >Fruits - 0/{{user.nutritionPlan.containers.purple}}</v-card>
-                    <v-card
-                      class="container my-1 pa-1"
-                      color="yellow"
-                    >Carbs - 0/{{user.nutritionPlan.containers.yellow}}</v-card>
-                    <v-card
-                      class="container my-1 pa-1 white--text"
+                  <!-- MY MEAL PLAN -->
+                  <v-flex class="my-meal-plan pa-2">
+                    <draggable
+                      :move="onMove"
+                      v-model="mealPlan"
+                      :options="dragOptions"
+                      @start="isDragging=true"
+                      @end="isDragging=false"
+                      class="grey--text"
+                    >
+                      {{mealPlan.length === 0 ? 'Drag Recipes Here' : null}}
+                      <v-card v-for="recipe in mealPlan" :key="recipe.id" class="meal my-1 pa-2">
+                        <router-link :to="`/recipes/${recipe.id}`">{{recipe.name}}</router-link>
+                        <span class="remove-meal" @click="removeRecipe(recipe.id)">X</span>
+                      </v-card>
+                    </draggable>
+                    <v-btn
+                      v-if="mealPlan.length > 0"
+                      small
                       color="red"
-                    >Proteins - 0/{{user.nutritionPlan.containers.red}}</v-card>
-                    <v-card
-                      class="container my-1 pa-1 white--text"
-                      color="blue"
-                    >Healthy Fats - 0/{{user.nutritionPlan.containers.blue}}</v-card>
-                    <v-card
-                      class="container my-1 pa-1 white--text"
-                      color="orange"
-                    >Seeds & Dressings - 0/{{user.nutritionPlan.containers.orange}}</v-card>
-                    <v-card
-                      class="container my-1 pa-1 white--text"
-                      color="grey"
-                    >Oils & Nut Butters - 0/{{user.nutritionPlan.containers.tsp}}</v-card>
+                      class="white--text"
+                      @click="resetMealPlan"
+                    >Reset</v-btn>
+                  </v-flex>
+
+                  <!-- REMAINING CONTAINERS -->
+                  <v-flex>
+                    <h6 class="title my-2">Remaining Containers:</h6>
+                    <v-flex xs8 offset-xs2>
+                      <v-card class="container my-1 pa-1 white--text" color="green">
+                        Veggies -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.green, 0)}} /
+                        <strong
+                          class="white--text"
+                        >{{user.nutritionPlan.containers.green}}</strong>
+                      </v-card>
+                      <v-card class="container my-1 pa-1 white--text" color="purple">
+                        Fruits -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.purple, 0)}} /
+                        <strong
+                          class="white--text"
+                        >{{user.nutritionPlan.containers.purple}}</strong>
+                      </v-card>
+                      <v-card class="container my-1 pa-1" color="yellow">
+                        Carbs -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.yellow, 0)}} /
+                        <strong
+                          class="black--text"
+                        >{{user.nutritionPlan.containers.yellow}}</strong>
+                      </v-card>
+                      <v-card class="container my-1 pa-1 white--text" color="red">
+                        Proteins -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.red, 0)}} /
+                        <strong
+                          class="white--text"
+                        >{{user.nutritionPlan.containers.red}}</strong>
+                      </v-card>
+                      <v-card class="container my-1 pa-1 white--text" color="blue">
+                        Healthy Fats -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.blue, 0)}} /
+                        <strong
+                          class="white--text"
+                        >{{user.nutritionPlan.containers.blue}}</strong>
+                      </v-card>
+                      <v-card class="container my-1 pa-1 white--text" color="orange">
+                        Seeds & Dressings -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.orange, 0)}} /
+                        <strong
+                          class="white--text"
+                        >{{user.nutritionPlan.containers.orange}}</strong>
+                      </v-card>
+                      <v-card class="container my-1 pa-1 white--text" color="grey">
+                        Oils & Nut Butters -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.tsp, 0)}} /
+                        <strong
+                          class="white--text"
+                        >{{user.nutritionPlan.containers.tsp}}</strong>
+                      </v-card>
+
+                      <!-- EXPORT MEAL PLAN -->
+                      <h4 class="my-3">EXPORT</h4>
+                    </v-flex>
                   </v-flex>
                 </v-layout>
               </v-flex>
@@ -109,23 +171,59 @@ export default {
   },
   data() {
     return {
-      mealPlan: {
-        breakfast: {},
-        snackA: {},
-        lunch: {},
-        snackB: {},
-        dinner: {}
-      }
+      isDragging: false,
+      delayedDragging: false
     };
   },
-  computed: mapState({
-    user: 'user',
-    breakfastRecipes: state =>
-      state.recipes.filter(r => r.type === 'breakfast'),
-    snackRecipes: state => state.recipes.filter(r => r.type === 'snack'),
-    lunchRecipes: state => state.recipes.filter(r => r.type === 'lunch'),
-    dinnerRecipes: state => state.recipes.filter(r => r.type === 'dinner')
-  })
+  methods: {
+    onMove({ relatedContext }) {
+      const relatedElement = relatedContext.element;
+      // const draggedElement = draggedContext.element;
+      return !relatedElement;
+    },
+    resetMealPlan() {
+      this.mealPlan = [];
+    },
+    removeRecipe(recipeID) {
+      this.mealPlan = this.mealPlan.filter(recipe => recipe.id !== recipeID);
+    }
+  },
+  watch: {
+    isDragging(newValue) {
+      if (newValue) {
+        this.delayedDragging = true;
+        return;
+      }
+      this.$nextTick(() => {
+        this.delayedDragging = false;
+      });
+    }
+  },
+  computed: {
+    dragOptions() {
+      return {
+        animation: 0,
+        group: 'mealPlan',
+        ghostClass: 'ghost'
+      };
+    },
+    mealPlan: {
+      get() {
+        return this.$store.state.user.mealPlan;
+      },
+      set(value) {
+        this.$store.dispatch('updateMealPlan', value);
+      }
+    },
+    ...mapState({
+      user: 'user',
+      breakfastRecipes: state =>
+        state.recipes.filter(r => r.type === 'breakfast'),
+      snackRecipes: state => state.recipes.filter(r => r.type === 'snack'),
+      lunchRecipes: state => state.recipes.filter(r => r.type === 'lunch'),
+      dinnerRecipes: state => state.recipes.filter(r => r.type === 'dinner')
+    })
+  }
 };
 </script>
 
@@ -133,27 +231,48 @@ export default {
 strong {
   color: #1976d2;
 }
+
 .meal-prep {
   display: flex;
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
 }
+
 .recipe-list {
   overflow: auto;
-  min-height: 100vh;
+  height: 100vh;
 }
+
 .meal-plan {
   border-left: 3px solid #1976d2;
-  position: sticky;
-  top: 0px;
-  height: 90vh;
+  /* position: sticky;
+  top: 0px; */
+  max-height: 100vh;
 }
 
 .meal,
-.recipe {
+.recipe,
+.my-meal-plan {
   border: 1px solid #1976d2;
+  border-radius: 5px;
+  background: #fff;
 }
-.recipe {
+
+.recipe,
+.meal {
   cursor: move;
+}
+
+a {
+  text-decoration: none;
+  display: inline;
+}
+
+.remove-meal {
+  position: absolute;
+  left: 93%;
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
 }
 </style>
