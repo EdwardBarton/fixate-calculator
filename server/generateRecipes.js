@@ -11,10 +11,9 @@ app.use(bp.json());
 const generateRandomContainers = () => Math.floor(Math.random() * 4);
 
 app.get('/generaterecipes', (req, res) => {
-  axios
-    .get(
-      'https://api.edamam.com/search?q=lunch&app_id=b32978be&app_key=347e9bb3e963f8caaa52429502462648&to=5&diet=low-fat'
-    )
+  fetch(
+    'https://api.edamam.com/search?q=lunch&app_id=b32978be&app_key=347e9bb3e963f8caaa52429502462648&to=5&diet=low-fat'
+  )
     .then(resp => {
       const breakfastRecipes = resp.data.hits.map(r => {
         return {

@@ -1,19 +1,22 @@
-const express = require('express');
+const app = require('express')();
 const bp = require('body-parser');
 const cors = require('cors');
-const { recipes, programs } = require('../data');
+const mongoose = require('mongoose');
 
-const app = express();
+mongoose.connect(
+  'mongodb://localhost/fixateCalc',
+  { useNewUrlParser: true }
+);
+
 app.use(cors());
 app.use(bp.urlencoded({ extended: false }));
 app.use(bp.json());
+app.use(require('./routes/programs'));
+app.use(require('./routes/recipes'));
+// app.use(require('./data/generate-data')); // seed MongoDB
 
-app.get('/recipes', (req, res) => {
-  res.send(recipes);
+const port = process.env.port || 8001;
+
+app.listen(port, () => {
+  console.log('Node.js listening on port', port);
 });
-
-app.get('/programs', (req, res) => {
-  res.send(programs);
-});
-
-app.listen(process.env.port || 8001);
