@@ -1,8 +1,8 @@
 <template>
-  <v-container>
-    <v-layout row mb-5>
-      <v-btn round color="primary" @click="() => this.$router.go(-1)">Back</v-btn>
-      <v-flex d-flex xs12 md6 offset-md1>
+  <v-container class="v-container">
+    <v-layout row mb-5 class="recipe-detail">
+      <v-btn round fixed color="primary" @click="() => this.$router.go(-1)">Back</v-btn>
+      <v-flex d-flex xs12 md6 offset-md2>
         <v-layout align-center>
           <div>
             <h1>{{recipe.name}}</h1>
@@ -121,6 +121,14 @@ export default {
 </script>
 
 <style scoped>
+.v-container {
+  min-height: 100vh;
+}
+
+.recipe-detail {
+  padding: 70px 0 10px 0;
+}
+
 ul {
   list-style-type: none;
   margin: 0;

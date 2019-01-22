@@ -1,7 +1,7 @@
 <template>
-  <v-container grid-list-md fill-height text-xs-center>
+  <v-container grid-list-md fill-height text-xs-center class="v-container">
     <v-layout column>
-      <h4 class="display-1 mt-5">Step 1: Select Your Fitness Program</h4>
+      <h4 class="display-1 my-5">Step 1: Select Your Fitness Program</h4>
       <v-layout align-center justify-space-around wrap>
         <v-hover v-for="(p, i) in programs" :key="i" xs12 md3>
           <v-card
@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style scoped>
+.v-container {
+  min-height: 100vh;
+}
 .program {
   padding: 20px;
   cursor: pointer;

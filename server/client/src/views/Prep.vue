@@ -1,10 +1,10 @@
 <template>
-  <v-container grid-list-md fill-height fluid text-xs-center>
+  <v-container grid-list-md fill-height fluid text-xs-center class="v-container">
     <v-layout row wrap class="meal-prep">
       <v-flex d-flex xs12 md8 class="recipe-list">
         <v-layout justify-center>
           <div class="meal-prep-header">
-            <h4 class="display-1 mt-2">
+            <h4 class="display-1 my-3">
               Your {{user.selectedProgram.name}} Nutrition Plan is:
               <strong>Plan {{user.nutritionPlan.id}}</strong>
             </h4>
@@ -68,7 +68,7 @@
       </v-flex>
 
       <!-- **************** MEAL PLANNING SECTION **************** -->
-      <v-flex class="meal-plan" d-flex xs12 md4>
+      <v-flex class="meal-plan" xs12 md4>
         <v-layout row wrap>
           <v-flex d-flex xs12>
             <v-layout justify-center>
@@ -149,7 +149,7 @@
                       </v-card>
 
                       <!-- EXPORT SHOPPING LIST -->
-                      <form class="mt-5">
+                      <form class="mt-5" @submit.prevent="emailShoppingList(prepDays)">
                         <input
                           type="number"
                           class="input-field"
@@ -164,7 +164,7 @@
                         <v-btn
                           color="primary"
                           @click.prevent="emailShoppingList(prepDays)"
-                        >Email Shopping List</v-btn>
+                        >Shopping List</v-btn>
                       </form>
                     </v-flex>
                   </v-flex>
@@ -253,22 +253,21 @@ strong {
   color: #1976d2;
 }
 
+.v-container {
+  max-height: 100vh;
+}
+
 .meal-prep {
-  display: flex;
-  position: relative;
-  height: 100vh;
+  padding: 80px 0 10px 0;
 }
 
 .recipe-list {
   overflow: auto;
-  height: 100vh;
 }
 
 .meal-plan {
   border-left: 3px solid #1976d2;
-  /* position: sticky;
-  top: 0px; */
-  max-height: 100vh;
+  overflow: auto;
 }
 
 .meal,

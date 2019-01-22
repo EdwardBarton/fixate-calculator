@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-md fill-height text-xs-center>
+  <v-container grid-list-md fill-height text-xs-center class="v-container">
     <v-layout column>
       <v-flex xs12>
         <v-layout row align-center justify-center fill-height>
@@ -18,4 +18,7 @@ export default {};
 </script>
 
 <style scoped>
+.v-container {
+  min-height: 100vh;
+}
 </style>

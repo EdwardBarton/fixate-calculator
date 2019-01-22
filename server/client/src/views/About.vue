@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-md fill-height text-xs-center>
+  <v-container grid-list-md fill-height text-xs-center class="v-container">
     <v-layout column>
       <h4 class="display-1 my-5">Step 2: About You</h4>
       <v-layout justify-center class="about">
@@ -51,6 +51,9 @@ export default {
 </script>
 
 <style scoped>
+.v-container {
+  min-height: 100vh;
+}
 form {
   max-width: 500px;
   padding: 40px;

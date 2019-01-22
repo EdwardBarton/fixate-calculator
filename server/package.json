@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "concurrently --kill-others-on-fail \"nodemon src/app\" \"cd client && npm run serve\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Edward Barton",
@@ -11,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mysql2": "^1.6.4",
