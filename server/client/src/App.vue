@@ -49,6 +49,6 @@ export default {
 <style>
 .app {
   background: #eeeded;
-  /* height: 100%; */
+  font-family: 'Helvetica Neue', serif, sans-serif;
 }
 </style>

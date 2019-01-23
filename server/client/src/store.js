@@ -80,12 +80,12 @@ export default new Vuex.Store({
   },
   actions: {
     fetchPrograms({ commit }) {
-      fetch('http://localhost:8001/programs').then(async programs => {
+      fetch('http://localhost:8001/api/programs').then(async programs => {
         commit('FETCH_PROGRAMS', await programs.json());
       });
     },
     fetchRecipes({ commit }) {
-      fetch('http://localhost:8001/recipes').then(async recipes => {
+      fetch('http://localhost:8001/api/recipes').then(async recipes => {
         commit('FETCH_RECIPES', await recipes.json());
       });
     },

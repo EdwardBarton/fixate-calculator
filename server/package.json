@@ -10,13 +10,11 @@
   "author": "Edward Barton",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mysql2": "^1.6.4",
-    "sequelize": "^4.42.0",
-    "sqlite3": "^4.0.4"
+    "mathjs": "^5.4.1",
+    "mongoose": "^5.4.6"
   }
 }

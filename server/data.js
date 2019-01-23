@@ -432,7 +432,7 @@ const recipes = [
       red: 3,
       orange: 2,
       blue: 2,
-      teaspoon: 2
+      tsp: 2
     }
   },
   {
@@ -489,7 +489,7 @@ const recipes = [
       red: 3,
       orange: 2,
       blue: 0,
-      teaspoon: 1
+      tsp: 1
     }
   },
   {
@@ -542,7 +542,7 @@ const recipes = [
       red: 2,
       orange: 2,
       blue: 1,
-      teaspoon: 0
+      tsp: 0
     }
   },
   {
@@ -600,7 +600,7 @@ const recipes = [
       red: 0,
       orange: 2,
       blue: 2,
-      teaspoon: 0
+      tsp: 0
     }
   },
   {
@@ -617,7 +617,7 @@ const recipes = [
       '1 cup water',
       '3 garlic cloves, thinly sliced',
       '1 tablespoon kosher salt',
-      '2 teaspoons granulated sugar',
+      '2 tsps granulated sugar',
       '8 medium radishes (preferably breakfast radishes), quartered lengthwise',
       '½ small red onion, thinly sliced crosswise'
     ],
@@ -659,7 +659,7 @@ const recipes = [
       red: 0,
       orange: 1,
       blue: 3,
-      teaspoon: 1
+      tsp: 1
     }
   },
   {
@@ -714,7 +714,7 @@ const recipes = [
       red: 0,
       orange: 1,
       blue: 0,
-      teaspoon: 1
+      tsp: 1
     }
   },
   {
@@ -768,7 +768,7 @@ const recipes = [
       red: 3,
       orange: 0,
       blue: 3,
-      teaspoon: 3
+      tsp: 3
     }
   },
   {
@@ -783,18 +783,18 @@ const recipes = [
     ingredients: [
       '8 tablespoons (1 stick, 4 ounces or 115 grams) unsalted butter, cut into chunks, plus more for pan',
       '1 cup water',
-      '1 1/2 teaspoons baking soda',
+      '1 1/2 tsps baking soda',
       '2/3 cup packed dark-brown sugar',
       '1 cup unsulfured molasses',
       '1 tablespoon freshly grated ginger (optional)',
       '2 large eggs, room temperature, lightly beaten',
       '2 1/2 cups all-purpose flour, plus more for pan',
-      '2 teaspoons ground ginger',
-      '1 1/2 teaspoons ground cinnamon',
-      '1/2 teaspoon ground cloves',
-      '1/2 teaspoon ground or freshly grated nutmeg',
-      '1/2 teaspoon salt',
-      '2 teaspoons baking powder',
+      '2 tsps ground ginger',
+      '1 1/2 tsps ground cinnamon',
+      '1/2 tsp ground cloves',
+      '1/2 tsp ground or freshly grated nutmeg',
+      '1/2 tsp salt',
+      '2 tsps baking powder',
       'Confectioners’ sugar, for dusting finished cake',
       'Lightly sweetened whipped cream, essential for serving'
     ],
@@ -837,7 +837,7 @@ const recipes = [
       red: 3,
       orange: 3,
       blue: 0,
-      teaspoon: 3
+      tsp: 3
     }
   },
   {
@@ -895,7 +895,7 @@ const recipes = [
       red: 1,
       orange: 1,
       blue: 1,
-      teaspoon: 3
+      tsp: 3
     }
   },
   {
@@ -950,7 +950,7 @@ const recipes = [
       red: 2,
       orange: 3,
       blue: 2,
-      teaspoon: 2
+      tsp: 2
     }
   },
   {
@@ -969,7 +969,7 @@ const recipes = [
       '1/2 bay leaf',
       '4 thyme sprigs',
       'Half a dried cayenne pepper or a pinch of dried chile flakes',
-      '1/2 teaspoon coriander seeds',
+      '1/2 tsp coriander seeds',
       '2 whole cloves',
       '1 garlic clove, peeled and cut in half',
       'A big pinch of salt',
@@ -1013,7 +1013,7 @@ const recipes = [
       red: 0,
       orange: 0,
       blue: 0,
-      teaspoon: 0
+      tsp: 0
     }
   },
   {
@@ -1070,7 +1070,7 @@ const recipes = [
       red: 2,
       orange: 1,
       blue: 1,
-      teaspoon: 0
+      tsp: 0
     }
   },
   {
@@ -1123,7 +1123,7 @@ const recipes = [
       red: 3,
       orange: 3,
       blue: 2,
-      teaspoon: 1
+      tsp: 1
     }
   },
   {
@@ -1183,7 +1183,7 @@ const recipes = [
       red: 2,
       orange: 2,
       blue: 3,
-      teaspoon: 1
+      tsp: 1
     }
   },
   {
@@ -1198,8 +1198,8 @@ const recipes = [
       '1 head cauliflower',
       '1/2 cup cider vinegar',
       '1/2 cup water',
-      '1 teaspoon dry mustard',
-      '1/2 teaspoon turmeric',
+      '1 tsp dry mustard',
+      '1/2 tsp turmeric',
       '3/4 cup sugar',
       'pinch white pepper'
     ],
@@ -1241,7 +1241,7 @@ const recipes = [
       red: 0,
       orange: 1,
       blue: 2,
-      teaspoon: 1
+      tsp: 1
     }
   },
   {
@@ -1296,7 +1296,7 @@ const recipes = [
       red: 1,
       orange: 0,
       blue: 3,
-      teaspoon: 2
+      tsp: 2
     }
   },
   {
@@ -1309,9 +1309,9 @@ const recipes = [
     servings: 9,
     ingredients: [
       '1/4 cup water, body temperature',
-      '1 teaspoon dry active yeast',
+      '1 tsp dry active yeast',
       '2 tablespoons sugar',
-      '1 teaspoon kosher salt, heaping, if you use a fine grind salt only use 1/2 teaspoon',
+      '1 tsp kosher salt, heaping, if you use a fine grind salt only use 1/2 tsp',
       '3 tablespoons raw wheat germ, toasted in a saute pan until nutty smelling',
       '2 cups unbleached all purpose flour',
       '1 stick of unsalted butter, softened, plus some for brushing the rolls',
@@ -1356,7 +1356,7 @@ const recipes = [
       red: 2,
       orange: 3,
       blue: 0,
-      teaspoon: 3
+      tsp: 3
     }
   },
   {
@@ -1376,7 +1376,7 @@ const recipes = [
       '1 cucumber, peeled',
       '1/4 cup cilantro, chopped',
       '2 tablespoons red wine vinegar',
-      '1 teaspoon chili paste',
+      '1 tsp chili paste',
       'Salt and pepper'
     ],
     calories: 153,
@@ -1417,7 +1417,7 @@ const recipes = [
       red: 2,
       orange: 2,
       blue: 1,
-      teaspoon: 3
+      tsp: 3
     }
   },
   {
@@ -1432,12 +1432,12 @@ const recipes = [
     ingredients: [
       '1/2 small (about 4 ounces/112 grams) orange-fleshed sweet potato (also called yam)',
       '1 1/2 cups plus 1 tablespoon (8 ounces/224 grams) unbleached all-purpose flour',
-      '1/3 cup plus 4 teaspoons (3.5 ounces/98 grams) water, room temperature (70°F to 90°F)',
-      '1 1/2 teaspoons honey',
-      '3/4 teaspoon instant yeast (also known as rapid-rise or bread machine yeast)',
+      '1/3 cup plus 4 tsps (3.5 ounces/98 grams) water, room temperature (70°F to 90°F)',
+      '1 1/2 tsps honey',
+      '3/4 tsp instant yeast (also known as rapid-rise or bread machine yeast)',
       '1 1/2 tablespoons non-fat dry milk powder',
       '1 tablespoon unsalted butter, softened, plus 6 tablespoons unsalted butter, melted and cooled',
-      '3/4 teaspoon fine sea salt'
+      '3/4 tsp fine sea salt'
     ],
     calories: 1724,
     time: 0,
@@ -1478,7 +1478,7 @@ const recipes = [
       red: 1,
       orange: 0,
       blue: 3,
-      teaspoon: 3
+      tsp: 3
     }
   },
   {
@@ -1495,12 +1495,12 @@ const recipes = [
       '1 sprig mint',
       '1 sprig rosemary',
       '1 (1-inch) piece fresh ginger',
-      '1/4 teaspoon turmeric powder',
+      '1/4 tsp turmeric powder',
       'Juice of 1 medium orange',
       '1 cup club soda (or water)',
       '1 tablespoon apple cider vinegar',
       '1 tablespoon honey',
-      '1 to 2 teaspoons digestive or aromatic bitters'
+      '1 to 2 tsps digestive or aromatic bitters'
     ],
     calories: 181,
     time: 10,
@@ -1540,7 +1540,7 @@ const recipes = [
       red: 3,
       orange: 1,
       blue: 0,
-      teaspoon: 2
+      tsp: 2
     }
   }
 ];
