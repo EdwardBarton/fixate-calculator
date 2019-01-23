@@ -5,17 +5,17 @@
       <v-flex d-flex xs12 md4 offset-md2>
         <v-layout align-center>
           <div>
-            <h1>{{recipe.name}}</h1>
-            <h2>Serves: {{recipe.servings}}</h2>
-            <h2>Prep Time: {{recipe.prepTime}}</h2>
-            <h2>Cook Time: {{recipe.cookTime}}</h2>
+            <h4 class="display-1">{{recipe.name}}</h4>
+            <h3>Serves: {{recipe.servings}}</h3>
+            <h3>Prep Time: {{recipe.prepTime}}</h3>
+            <h3>Cook Time: {{recipe.cookTime}}</h3>
           </div>
         </v-layout>
       </v-flex>
       <v-flex d-flex xs12 md4>
         <v-layout column text-xs-center>
           <h2>Nutritional Info</h2>
-          <ul>
+          <ul style="list-style-type: none;" class="ma-0 pa-0">
             <li>Calories: {{recipe.nutritionInfo.calories}}</li>
             <li
               v-if="recipe.nutritionInfo.fat.quantity !== 0"
@@ -44,19 +44,16 @@
     </v-layout>
     <v-layout row text-xs-center>
       <v-flex d-flex xs12 md4>
-        <v-layout column text-xs-left>
-          <h2>Instructions</h2>
-          <ul>
-            <li
-              v-for="(instruction, index) in recipe.instructions"
-              :key="index"
-            >{{index + 1}} - {{instruction}}</li>
-          </ul>
+        <v-layout class="mx-2" column text-xs-left>
+          <h2 style="text-align: center;">Instructions</h2>
+          <ol>
+            <li v-for="(instruction, index) in recipe.instructions" :key="index">{{instruction}}</li>
+          </ol>
         </v-layout>
       </v-flex>
       <v-flex d-flex xs12 md4>
-        <v-layout column>
-          <h2>Ingredients</h2>
+        <v-layout class="mx-2" column text-xs-left>
+          <h2 style="text-align: center;">Ingredients</h2>
           <ul>
             <li
               v-for="ingredient in recipe.ingredients"
@@ -68,7 +65,7 @@
       <v-flex d-flex xs12 md4>
         <v-layout justify-center>
           <v-flex xs6 offset-xs1>
-            <h6 class="title mb-2">Containers</h6>
+            <h2>Containers</h2>
             <v-layout column>
               <v-flex>
                 <v-card
@@ -136,11 +133,11 @@ export default {
   padding: 70px 0 10px 0;
 }
 
-ul {
-  list-style-type: none;
+/* ul,
+ol {
   margin: 0;
   padding: 0;
-}
+} */
 
 .recipe-img {
   border-radius: 50%;

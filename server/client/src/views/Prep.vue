@@ -268,7 +268,7 @@ strong {
 }
 
 .meal-prep {
-  padding: 80px 0 10px 0;
+  padding: 70px 0 10px 0;
 }
 
 .recipe-list {
