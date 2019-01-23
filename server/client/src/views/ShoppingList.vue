@@ -5,8 +5,17 @@
       <v-flex d-flex xs12 md6 offset-md3>
         <v-layout column>
           <h1>Shopping List</h1>
-          <ul>
-            <li v-for="(ingredient, index) in ingredients" :key="index">{{days}}x - {{ingredient}}</li>
+          <ul v-if="Number(days) === 1">
+            <li
+              v-for="i in ingredients"
+              :key="i._id"
+            >{{i.quantity ? i.quantity : ''}} {{i.unit ? i.unit : ''}} {{i.item}}</li>
+          </ul>
+          <ul v-else>
+            <li
+              v-for="i in ingredients"
+              :key="i._id"
+            >{{i.quantity ? $math.eval(Number(days) * $math.fraction(i.quantity)) : ''}} {{i.unit ? i.unit : ''}} {{i.item}}</li>
           </ul>
         </v-layout>
       </v-flex>

@@ -49,6 +49,5 @@ export default {
 <style>
 .app {
   background: #eeeded;
-  /* height: 100%; */
 }
 </style>

@@ -20,37 +20,41 @@
               @start="isDragging=true"
               @end="isDragging=false"
             >
-              <v-card v-for="r in breakfastRecipes" :key="r.id" class="recipe my-1 pa-2">
-                <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
+              <v-card v-for="r in breakfastRecipes" :key="r._id" class="recipe my-1 pa-2">
+                <router-link :to="`/recipes/${r._id}`">{{r.name}}</router-link>
               </v-card>
             </draggable>
-            <h6 class="title mt-5 mb-2">Lunch</h6>
+
+            <!-- SOUP & SALAD RECIPES -->
+            <h6 class="title mt-5 mb-2">Soups & Salads</h6>
             <draggable
               :move="onMove"
               :options="dragOptions"
-              :value="lunchRecipes"
+              :value="soupSaladRecipes"
               @start="isDragging=true"
               @end="isDragging=false"
             >
-              <!-- LUNCH RECIPES -->
-              <v-card v-for="r in lunchRecipes" :key="r.id" class="recipe my-1 pa-2">
-                <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
+              <v-card v-for="r in soupSaladRecipes" :key="r._id" class="recipe my-1 pa-2">
+                <router-link :to="`/recipes/${r._id}`">{{r.name}}</router-link>
               </v-card>
             </draggable>
-            <h6 class="title mt-5 mb-2">Dinner</h6>
+
+            <!-- ENTREE RECIPES -->
+            <h6 class="title mt-5 mb-2">Entrees</h6>
             <draggable
               :move="onMove"
               :options="dragOptions"
-              :value="dinnerRecipes"
+              :value="entreeRecipes"
               @start="isDragging=true"
               @end="isDragging=false"
             >
-              <!-- DINNER RECIPES -->
-              <v-card v-for="r in dinnerRecipes" :key="r.id" class="recipe my-1 pa-2">
-                <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
+              <v-card v-for="r in entreeRecipes" :key="r._id" class="recipe my-1 pa-2">
+                <router-link :to="`/recipes/${r._id}`">{{r.name}}</router-link>
               </v-card>
             </draggable>
-            <h6 class="title mt-5 mb-2">Snacks</h6>
+
+            <!-- SNACK RECIPES -->
+            <h6 class="title mt-5 mb-2">Sides & Snacks</h6>
             <draggable
               :move="onMove"
               :options="dragOptions"
@@ -58,9 +62,8 @@
               @start="isDragging=true"
               @end="isDragging=false"
             >
-              <!-- SNACK RECIPES -->
-              <v-card v-for="r in snackRecipes" :key="r.id" class="recipe my-1 pa-2">
-                <router-link :to="`/recipes/${r.id}`">{{r.name}}</router-link>
+              <v-card v-for="r in snackRecipes" :key="r._id" class="recipe my-1 pa-2">
+                <router-link :to="`/recipes/${r._id}`">{{r.name}}</router-link>
               </v-card>
             </draggable>
           </div>
@@ -86,9 +89,9 @@
                       class="grey--text"
                     >
                       {{mealPlan.length === 0 ? 'Drag Recipes Here' : null}}
-                      <v-card v-for="recipe in mealPlan" :key="recipe.id" class="meal my-1 pa-2">
-                        <router-link :to="`/recipes/${recipe.id}`">{{recipe.name}}</router-link>
-                        <span class="remove-meal" @click="removeRecipe(recipe.id)">X</span>
+                      <v-card v-for="recipe in mealPlan" :key="recipe._id" class="meal my-1 pa-2">
+                        <router-link :to="`/recipes/${recipe._id}`">{{recipe.name}}</router-link>
+                        <span class="remove-meal" @click="removeRecipe(recipe._id)">X</span>
                       </v-card>
                     </draggable>
                     <v-btn
@@ -106,43 +109,43 @@
                     <h6 class="title my-2">Remaining Containers:</h6>
                     <v-flex xs8 offset-xs2>
                       <v-card class="container my-1 pa-1 white--text" color="green">
-                        Veggies -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.green, 0)}} /
+                        Veggies -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.green)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.green}}</strong>
                       </v-card>
                       <v-card class="container my-1 pa-1 white--text" color="purple">
-                        Fruits -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.purple, 0)}} /
+                        Fruits -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.purple)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.purple}}</strong>
                       </v-card>
                       <v-card class="container my-1 pa-1" color="yellow">
-                        Carbs -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.yellow, 0)}} /
+                        Carbs -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.yellow)), 0)}} /
                         <strong
                           class="black--text"
                         >{{user.nutritionPlan.containers.yellow}}</strong>
                       </v-card>
                       <v-card class="container my-1 pa-1 white--text" color="red">
-                        Proteins -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.red, 0)}} /
+                        Proteins -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.red)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.red}}</strong>
                       </v-card>
                       <v-card class="container my-1 pa-1 white--text" color="blue">
-                        Healthy Fats -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.blue, 0)}} /
+                        Healthy Fats -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.blue)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.blue}}</strong>
                       </v-card>
                       <v-card class="container my-1 pa-1 white--text" color="orange">
-                        Seeds & Dressings -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.orange, 0)}} /
+                        Seeds & Dressings -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.orange)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.orange}}</strong>
                       </v-card>
                       <v-card class="container my-1 pa-1 white--text" color="grey">
-                        Oils & Nut Butters -- {{mealPlan.reduce((acc, recipe) => acc += recipe.containers.tsp, 0)}} /
+                        Oils & Nut Butters -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.tsp)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.tsp}}</strong>
@@ -163,6 +166,7 @@
                         >
                         <v-btn
                           color="primary"
+                          type="submit"
                           @click.prevent="emailShoppingList(prepDays)"
                         >Shopping List</v-btn>
                       </form>
@@ -196,17 +200,21 @@ export default {
   methods: {
     onMove({ relatedContext }) {
       const relatedElement = relatedContext.element;
-      // const draggedElement = draggedContext.element;
       return !relatedElement;
     },
     resetMealPlan() {
       this.mealPlan = [];
     },
     removeRecipe(recipeID) {
-      this.mealPlan = this.mealPlan.filter(recipe => recipe.id !== recipeID);
+      this.mealPlan = this.mealPlan.filter(recipe => recipe._id !== recipeID);
     },
     emailShoppingList(numDays) {
-      this.$router.push(`/list?days=${numDays}`);
+      const form = document.getElementsByTagName('form')[0];
+      if (form.checkValidity()) {
+        this.$router.push(`/list?days=${numDays}`);
+      } else {
+        alert('You must enter # prep days, ranging from 1-30');
+      }
     }
   },
   watch: {
@@ -240,9 +248,11 @@ export default {
       user: 'user',
       breakfastRecipes: state =>
         state.recipes.filter(r => r.type === 'breakfast'),
-      snackRecipes: state => state.recipes.filter(r => r.type === 'snack'),
-      lunchRecipes: state => state.recipes.filter(r => r.type === 'lunch'),
-      dinnerRecipes: state => state.recipes.filter(r => r.type === 'dinner')
+      snackRecipes: state =>
+        state.recipes.filter(r => r.type === 'side & snack'),
+      soupSaladRecipes: state =>
+        state.recipes.filter(r => r.type === 'soup & salad'),
+      entreeRecipes: state => state.recipes.filter(r => r.type === 'entree')
     })
   }
 };
