@@ -3,11 +3,11 @@
     <v-layout column>
       <h4 class="display-1 my-5">Step 2: About You</h4>
       <v-layout justify-center class="about">
-        <form>
+        <form @submit.prevent="getPlan">
           <label for="gender">
             <v-radio-group v-model="gender" row>
-              <v-radio label="Male*" value="male"></v-radio>
-              <v-radio label="Female*" value="female"></v-radio>
+              <v-radio name="gender" label="Male*" value="male" required></v-radio>
+              <v-radio name="gender" label="Female*" value="female"></v-radio>
             </v-radio-group>
           </label>
           <label for="weight">
@@ -40,11 +40,16 @@ export default {
   },
   methods: {
     getPlan() {
-      this.$store.dispatch('calculateNutritionPlan', {
-        gender: this.gender,
-        weight: this.weight
-      });
-      this.$router.push('/prep');
+      const form = document.getElementsByTagName('form')[0];
+      if (form.checkValidity()) {
+        this.$store.dispatch('calculateNutritionPlan', {
+          gender: this.gender,
+          weight: this.weight
+        });
+        this.$router.push('/prep');
+      } else {
+        alert('Please fill out all form fields');
+      }
     }
   }
 };
