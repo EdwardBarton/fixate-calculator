@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const User = require('../models/User');
 const Recipe = require('../models/Recipe');
 const Program = require('../models/Program');
 const {
@@ -8,6 +9,22 @@ const {
 } = require('./NutritionPlans');
 
 router.get('/api/generate-data', async (req, res) => {
+  // Initialize single dummy user (for demo purposes)
+  const user = new User({
+    selectedProgram: {
+      name: 'foo'
+    },
+    gender: 'foo',
+    weight: 0,
+    nutritionPlan: {
+      id: 'foo',
+      minCalories: 0,
+      maxCalories: 0
+    },
+    mealPlan: []
+  });
+  await user.save();
+
   // LIIFT 4
   const LIIFT4 = new Program({
     id: 1,

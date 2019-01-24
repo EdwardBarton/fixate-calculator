@@ -13,7 +13,8 @@ app.use(bp.urlencoded({ extended: false }));
 app.use(bp.json());
 app.use(require('./routes/programs'));
 app.use(require('./routes/recipes'));
-// app.use(require('./data/generate-data')); // seed MongoDB
+app.use(require('./routes/users'));
+// app.use(require('./routes/generate-data')); // seed MongoDB
 
 const port = process.env.port || 8001;
 
