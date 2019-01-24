@@ -15,7 +15,7 @@ app.use(bp.json());
 app.use(require('./routes/programs'));
 app.use(require('./routes/recipes'));
 app.use(require('./routes/users'));
-// app.use(require('./routes/generate-data')); // seed MongoDB
+app.use(require('./routes/generate-data')); // seed MongoDB
 
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
