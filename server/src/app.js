@@ -16,7 +16,7 @@ app.use(require('./routes/recipes'));
 app.use(require('./routes/users'));
 // app.use(require('./routes/generate-data')); // seed MongoDB
 
-const port = process.env.port || 8001;
+const port = process.env.PORT || 8001;
 
 app.listen(port, () => {
   console.log('Node.js listening on port', port);
