@@ -11,7 +11,7 @@
         <v-spacer></v-spacer>
         <v-btn
           color="#FFF"
-          v-if="Object.keys(user.selectedProgram).length !== 0"
+          v-if="$route.path !== '/' && Object.keys(user.selectedProgram).length !== 0"
           @click="resetUser"
         >
           <span class="mr-2">Start Over</span>
@@ -33,6 +33,7 @@ export default {
   created() {
     this.$store.dispatch('fetchPrograms');
     this.$store.dispatch('fetchRecipes');
+    this.$store.dispatch('fetchUser');
   },
   computed: mapState({
     user: 'user'

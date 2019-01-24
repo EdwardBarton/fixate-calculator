@@ -3,16 +3,16 @@
     <v-layout column class="select-program">
       <h4 class="display-1 my-5">Step 1: Select Your Fitness Program</h4>
       <v-layout align-center justify-space-around wrap>
-        <v-hover v-for="(p, i) in programs" :key="i" xs12 md3>
+        <v-hover v-for="program in programs" :key="program._id" xs12 md3>
           <v-card
             slot-scope="{ hover }"
             :color="`primary elevation-${hover ? 24 : 2}`"
             class="d-flex align-center program"
             height="250"
             width="250"
-            @click="selectProgram(p)"
+            @click="selectProgram(program)"
           >
-            <v-img :src="p.image"></v-img>
+            <v-img :src="program.image"></v-img>
           </v-card>
         </v-hover>
       </v-layout>
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     selectProgram(program) {
-      this.$store.dispatch('selectProgram', program);
+      this.$store.dispatch('updateUserProgram', program);
       this.$router.push('/about');
     }
   }

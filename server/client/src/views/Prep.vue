@@ -1,6 +1,7 @@
 <template>
   <v-container grid-list-md fill-height fluid text-xs-center class="v-container">
-    <v-layout row wrap class="meal-prep">
+    <v-layout row v-if="!user.nutritionPlan">Loading...</v-layout>
+    <v-layout row wrap v-else class="meal-prep">
       <v-flex d-flex xs12 md8 class="recipe-list">
         <v-layout justify-center>
           <div class="meal-prep-header">
@@ -241,7 +242,7 @@ export default {
         return this.$store.state.user.mealPlan;
       },
       set(value) {
-        this.$store.dispatch('updateMealPlan', value);
+        this.$store.dispatch('updateUserMealPlan', value);
       }
     },
     ...mapState({
