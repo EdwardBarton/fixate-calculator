@@ -33,22 +33,22 @@ export default new Vuex.Store({
   },
   actions: {
     fetchPrograms({ commit }) {
-      fetch('http://localhost:8001/api/programs').then(async programs => {
+      fetch('/api/programs').then(async programs => {
         commit('FETCH_PROGRAMS', await programs.json());
       });
     },
     fetchRecipes({ commit }) {
-      fetch('http://localhost:8001/api/recipes').then(async recipes => {
+      fetch('/api/recipes').then(async recipes => {
         commit('FETCH_RECIPES', await recipes.json());
       });
     },
     fetchUser({ commit }) {
-      fetch('http://localhost:8001/api/user').then(async user => {
+      fetch('/api/user').then(async user => {
         commit('FETCH_USER', await user.json());
       });
     },
     updateUserProgram({ commit }, program) {
-      fetch('http://localhost:8001/api/user/program', {
+      fetch('/api/user/program', {
         method: 'PUT',
         body: JSON.stringify(program),
         headers: {
@@ -62,7 +62,7 @@ export default new Vuex.Store({
       commit('RESET_USER');
     },
     calculateAndUpdateUserNutritionPlan({ commit }, userInfo) {
-      fetch('http://localhost:8001/api/user/about', {
+      fetch('/api/user/about', {
         method: 'PUT',
         body: JSON.stringify(userInfo),
         headers: {
@@ -73,7 +73,7 @@ export default new Vuex.Store({
       });
     },
     updateUserMealPlan({ commit }, mealPlan) {
-      fetch('http://localhost:8001/api/user/meals', {
+      fetch('/api/user/meals', {
         method: 'PUT',
         body: JSON.stringify(mealPlan),
         headers: {
