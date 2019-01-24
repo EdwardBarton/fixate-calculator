@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently --kill-others-on-fail \"nodemon src/app.js\" \"cd client && npm run serve\"",
     "start": "node src/app.js",
-    "postinstall": "npm run build",
+    "postinstall": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Edward Barton",
