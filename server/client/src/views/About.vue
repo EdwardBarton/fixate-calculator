@@ -42,10 +42,11 @@ export default {
     getPlan() {
       const form = document.getElementsByTagName('form')[0];
       if (form.checkValidity()) {
-        this.$store.dispatch('calculateNutritionPlan', {
+        const user = {
           gender: this.gender,
           weight: this.weight
-        });
+        };
+        this.$store.dispatch('calculateAndUpdateUserNutritionPlan', user);
         this.$router.push('/prep');
       } else {
         alert('Please fill out all form fields');

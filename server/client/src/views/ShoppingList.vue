@@ -34,10 +34,12 @@ export default {
   computed: {
     ...mapState({
       ingredients: state =>
-        state.user.mealPlan.reduce(
-          (acc, recipe) => acc.concat(recipe.ingredients),
-          []
-        )
+        state.user.mealPlan
+          ? state.user.mealPlan.reduce(
+              (acc, recipe) => acc.concat(recipe.ingredients),
+              []
+            )
+          : null
     })
   }
 };

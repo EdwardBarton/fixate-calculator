@@ -33,6 +33,7 @@ export default {
   created() {
     this.$store.dispatch('fetchPrograms');
     this.$store.dispatch('fetchRecipes');
+    this.$store.dispatch('fetchUser');
   },
   computed: mapState({
     user: 'user'
