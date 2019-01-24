@@ -26,10 +26,6 @@ export default new Vuex.Store({
     },
     RESET_USER(state) {
       state.user.selectedProgram = {};
-      state.user.gender = '';
-      state.user.weight = 0;
-      state.user.nutritionPlan = {};
-      state.user.mealPlan = [];
     },
     UPDATE_USER_MEAL_PLAN(state, mealPlan) {
       state.user.mealPlan = mealPlan;
@@ -86,8 +82,6 @@ export default new Vuex.Store({
       }).then(async updatedUser => {
         commit('UPDATE_USER', await updatedUser.json());
       });
-
-      // commit('UPDATE_USER_MEAL_PLAN', mealPlan);
     }
   }
 });
