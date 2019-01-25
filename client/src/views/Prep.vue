@@ -22,7 +22,14 @@
               @end="isDragging=false"
             >
               <v-card v-for="r in breakfastRecipes" :key="r._id" class="recipe my-1 pa-2">
-                <router-link :to="`/recipes/${r._id}`">{{r.name}}</router-link>
+                <router-link class="mr-1" :to="`/recipes/${r._id}`">{{r.name}}</router-link>
+                <div
+                  v-for="(val, key, index) in r.containers"
+                  :style="{background: key === 'tsp' ? 'grey' : key, color: key === 'yellow' ? 'black' : 'white'}"
+                  :key="index"
+                  class="recipe-container-label mx-1"
+                  v-show="val !== '0'"
+                ></div>
               </v-card>
             </draggable>
 
@@ -37,6 +44,13 @@
             >
               <v-card v-for="r in soupSaladRecipes" :key="r._id" class="recipe my-1 pa-2">
                 <router-link :to="`/recipes/${r._id}`">{{r.name}}</router-link>
+                <div
+                  v-for="(val, key, index) in r.containers"
+                  :style="{background: key === 'tsp' ? 'grey' : key, color: key === 'yellow' ? 'black' : 'white'}"
+                  :key="index"
+                  class="recipe-container-label mx-1"
+                  v-show="val !== '0'"
+                ></div>
               </v-card>
             </draggable>
 
@@ -51,6 +65,13 @@
             >
               <v-card v-for="r in entreeRecipes" :key="r._id" class="recipe my-1 pa-2">
                 <router-link :to="`/recipes/${r._id}`">{{r.name}}</router-link>
+                <div
+                  v-for="(val, key, index) in r.containers"
+                  :style="{background: key === 'tsp' ? 'grey' : key, color: key === 'yellow' ? 'black' : 'white'}"
+                  :key="index"
+                  class="recipe-container-label mx-1"
+                  v-show="val !== '0'"
+                ></div>
               </v-card>
             </draggable>
 
@@ -65,6 +86,13 @@
             >
               <v-card v-for="r in snackRecipes" :key="r._id" class="recipe my-1 pa-2">
                 <router-link :to="`/recipes/${r._id}`">{{r.name}}</router-link>
+                <div
+                  v-for="(val, key, index) in r.containers"
+                  :style="{background: key === 'tsp' ? 'grey' : key, color: key === 'yellow' ? 'black' : 'white'}"
+                  :key="index"
+                  class="recipe-container-label mx-1"
+                  v-show="val !== '0'"
+                ></div>
               </v-card>
             </draggable>
           </div>
@@ -92,6 +120,13 @@
                       {{mealPlan.length === 0 ? 'Drag Recipes Here' : null}}
                       <v-card v-for="recipe in mealPlan" :key="recipe._id" class="meal my-1 pa-2">
                         <router-link :to="`/recipes/${recipe._id}`">{{recipe.name}}</router-link>
+                        <div
+                          v-for="(val, key, index) in recipe.containers"
+                          :style="{background: key === 'tsp' ? 'grey' : key, color: key === 'yellow' ? 'black' : 'white'}"
+                          :key="index"
+                          class="recipe-container-label mx-1"
+                          v-show="val !== '0'"
+                        ></div>
                         <span class="remove-meal" @click="removeRecipe(recipe._id)">X</span>
                       </v-card>
                     </draggable>
@@ -109,43 +144,43 @@
                   <v-flex>
                     <h6 class="title my-2">Remaining Containers:</h6>
                     <v-flex xs8 offset-xs2>
-                      <v-card class="container my-1 pa-1 white--text" color="green">
+                      <v-card class="fixate-container my-1 pa-1 white--text" color="green">
                         Veggies -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.green)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.green}}</strong>
                       </v-card>
-                      <v-card class="container my-1 pa-1 white--text" color="purple">
+                      <v-card class="fixate-container my-1 pa-1 white--text" color="purple">
                         Fruits -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.purple)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.purple}}</strong>
                       </v-card>
-                      <v-card class="container my-1 pa-1" color="yellow">
+                      <v-card class="fixate-container my-1 pa-1" color="yellow">
                         Carbs -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.yellow)), 0)}} /
                         <strong
                           class="black--text"
                         >{{user.nutritionPlan.containers.yellow}}</strong>
                       </v-card>
-                      <v-card class="container my-1 pa-1 white--text" color="red">
+                      <v-card class="fixate-container my-1 pa-1 white--text" color="red">
                         Proteins -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.red)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.red}}</strong>
                       </v-card>
-                      <v-card class="container my-1 pa-1 white--text" color="blue">
+                      <v-card class="fixate-container my-1 pa-1 white--text" color="blue">
                         Healthy Fats -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.blue)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.blue}}</strong>
                       </v-card>
-                      <v-card class="container my-1 pa-1 white--text" color="orange">
+                      <v-card class="fixate-container my-1 pa-1 white--text" color="orange">
                         Seeds & Dressings -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.orange)), 0)}} /
                         <strong
                           class="white--text"
                         >{{user.nutritionPlan.containers.orange}}</strong>
                       </v-card>
-                      <v-card class="container my-1 pa-1 white--text" color="grey">
+                      <v-card class="fixate-container my-1 pa-1 white--text" color="grey">
                         Oils & Nut Butters -- {{mealPlan.reduce((acc, recipe) => acc = this.$math.eval(acc + this.$math.fraction(recipe.containers.tsp)), 0)}} /
                         <strong
                           class="white--text"
@@ -287,6 +322,9 @@ strong {
   border: 1px solid #1976d2;
   border-radius: 5px;
   background: #fff;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 
 .recipe,
@@ -294,8 +332,16 @@ strong {
   cursor: move;
 }
 
-.container {
+.fixate-container {
   border-radius: 5px;
+}
+
+.recipe-container-label {
+  height: 10px;
+  width: 10px;
+  display: inline-block;
+  background: blue;
+  border-radius: 50%;
 }
 
 a {
