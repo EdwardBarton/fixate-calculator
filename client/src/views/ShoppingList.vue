@@ -28,9 +28,6 @@ import { mapState } from 'vuex';
 
 export default {
   props: ['days'],
-  data() {
-    return {};
-  },
   computed: {
     ...mapState({
       ingredients: state =>
