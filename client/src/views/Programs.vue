@@ -44,10 +44,6 @@ export default {
   min-height: 100vh;
 }
 
-.select-program {
-  padding-top: 70px;
-}
-
 .program {
   padding: 20px;
   cursor: pointer;

@@ -1,7 +1,7 @@
  <template>
   <v-app>
     <v-content class="app">
-      <v-toolbar fixed color="primary">
+      <v-toolbar app fixed color="primary">
         <router-link to="/">
           <v-toolbar-title class="headline text-uppercase white--text">
             <span>Fixate</span>

@@ -86,18 +86,16 @@ strong {
 }
 
 .v-container {
-  max-height: 100vh;
-}
-
-.meal-prep {
-  padding: 70px 0 10px 0;
+  max-height: calc(100vh - 64px);
 }
 
 .recipe-list {
+  height: 100%;
   overflow: auto;
 }
 
 .meal-plan {
+  height: 100%;
   border-left: 3px solid #1976d2;
   overflow: auto;
 }

@@ -3,28 +3,22 @@
     <v-layout column class="about-you">
       <h4 class="display-1 my-5">Step 2: About You</h4>
       <v-layout justify-center class="about">
-        <form @submit.prevent="getPlan">
-          <label for="gender">
+        <v-form @submit.prevent="getPlan" class="about-form">
+          <div class="about-form-inputs">
             <v-radio-group v-model="gender" row>
               <v-radio name="gender" label="Male*" value="male" required></v-radio>
               <v-radio name="gender" label="Female*" value="female"></v-radio>
             </v-radio-group>
-          </label>
-          <label for="weight">
-            <input
+            <v-text-field
+              label="Weight"
               type="number"
-              class="input-field"
-              name="weight"
               v-model.number="weight"
               min="0"
-              placeholder="Weight*"
-              required
-            >
-          </label>
-          <label>
+              outline
+            />
             <v-btn type="submit" color="primary" round @click.prevent="getPlan">Get My Plan</v-btn>
-          </label>
-        </form>
+          </div>
+        </v-form>
       </v-layout>
     </v-layout>
   </v-container>
@@ -40,7 +34,7 @@ export default {
   },
   methods: {
     getPlan() {
-      const form = document.getElementsByTagName('form')[0];
+      const form = document.querySelector('.about-form');
       if (form.checkValidity()) {
         const user = {
           gender: this.gender,
@@ -60,39 +54,12 @@ export default {
 .v-container {
   min-height: 100vh;
 }
-.about-you {
-  padding-top: 70px;
-}
-form {
+
+.about-form-inputs {
   max-width: 500px;
-  padding: 40px;
+  padding: 20px 40px 30px;
   border-radius: 10px;
   font: 15px Arial, Helvetica, sans-serif;
   background: white;
-  height: 100%;
-}
-form label {
-  display: block;
-  margin: 0px 0px 15px 0px;
-}
-
-form input.input-field {
-  width: 90%;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  border: 1px solid #000;
-  background: #fff;
-  box-shadow: 1px 1px 4px #ebebeb;
-  -moz-box-shadow: 1px 1px 4px #ebebeb;
-  -webkit-box-shadow: 1px 1px 4px #ebebeb;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  padding: 7px;
-  outline: none;
-}
-form .input-field:focus {
-  border: 1px solid #1976d2;
 }
 </style>
