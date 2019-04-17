@@ -32,56 +32,56 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    fetchPrograms({ commit }) {
-      fetch('/api/programs').then(async programs => {
-        commit('FETCH_PROGRAMS', await programs.json());
-      });
+    async fetchPrograms({ commit }) {
+      const resp = await fetch('/api/programs');
+      const programs = await resp.json();
+      commit('FETCH_PROGRAMS', programs);
     },
-    fetchRecipes({ commit }) {
-      fetch('/api/recipes').then(async recipes => {
-        commit('FETCH_RECIPES', await recipes.json());
-      });
+    async fetchRecipes({ commit }) {
+      const resp = await fetch('/api/recipes');
+      const recipes = await resp.json();
+      commit('FETCH_RECIPES', recipes);
     },
-    fetchUser({ commit }) {
-      fetch('/api/user').then(async user => {
-        commit('FETCH_USER', await user.json());
-      });
+    async fetchUser({ commit }) {
+      const resp = await fetch('/api/user');
+      const user = await resp.json();
+      commit('FETCH_USER', user);
     },
-    updateUserProgram({ commit }, program) {
-      fetch('/api/user/program', {
+    async updateUserProgram({ commit }, program) {
+      const resp = await fetch('/api/user/program', {
         method: 'PUT',
         body: JSON.stringify(program),
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(async updatedUser => {
-        commit('UPDATE_USER', await updatedUser.json());
       });
+      const updatedUser = await resp.json();
+      commit('UPDATE_USER', updatedUser);
     },
     resetUser({ commit }) {
       commit('RESET_USER');
     },
-    calculateAndUpdateUserNutritionPlan({ commit }, userInfo) {
-      fetch('/api/user/about', {
+    async calculateAndUpdateUserNutritionPlan({ commit }, userInfo) {
+      const resp = await fetch('/api/user/about', {
         method: 'PUT',
         body: JSON.stringify(userInfo),
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(async updatedUser => {
-        commit('UPDATE_USER', await updatedUser.json());
       });
+      const updatedUser = await resp.json();
+      commit('UPDATE_USER', updatedUser);
     },
-    updateUserMealPlan({ commit }, mealPlan) {
-      fetch('/api/user/meals', {
+    async updateUserMealPlan({ commit }, mealPlan) {
+      const resp = await fetch('/api/user/meals', {
         method: 'PUT',
         body: JSON.stringify(mealPlan),
         headers: {
           'Content-Type': 'application/json'
         }
-      }).then(async updatedUser => {
-        commit('UPDATE_USER', await updatedUser.json());
       });
+      const updatedUser = await resp.json();
+      commit('UPDATE_USER', updatedUser);
     }
   }
 });
