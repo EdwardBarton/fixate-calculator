@@ -130,14 +130,8 @@ export default {
 }
 
 .recipe-detail {
-  padding: 70px 0 10px 0;
+  padding-bottom: 10px;
 }
-
-/* ul,
-ol {
-  margin: 0;
-  padding: 0;
-} */
 
 .recipe-img {
   border-radius: 50%;

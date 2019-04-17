@@ -48,6 +48,6 @@ export default {
 }
 
 .shopping-list {
-  padding: 70px 0 10px 0;
+  padding-bottom: 10px;
 }
 </style>
